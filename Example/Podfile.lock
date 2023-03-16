@@ -1,0 +1,16 @@
+PODS:
+  - EVPlayer (0.1.0)
+
+DEPENDENCIES:
+  - EVPlayer (from `../`)
+
+EXTERNAL SOURCES:
+  EVPlayer:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EVPlayer: 474ac52081514d996c085d8386141e0c56a7616c
+
+PODFILE CHECKSUM: db63641dbd706e624093aafdabfcc7f49a8fd061
+
+COCOAPODS: 1.12.0

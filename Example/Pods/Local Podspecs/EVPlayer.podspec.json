@@ -1,0 +1,22 @@
+{
+  "name": "EVPlayer",
+  "version": "0.1.0",
+  "summary": "A short description of EVPlayer.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/esaygiver/EVPlayer",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "esaygiver": "saygivere@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/esaygiver/EVPlayer.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "EVPlayer/Classes/**/*"
+}
