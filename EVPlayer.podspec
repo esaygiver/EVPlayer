@@ -26,7 +26,7 @@ TODO: Add long description of the pod here.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'esaygiver' => 'saygivere@gmail.com' }
   s.source           = { :git => 'https://github.com/esaygiver/EVPlayer.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.social_media_url = 'https://twitter.com/esaygiver'
 
   s.ios.deployment_target = '12.0'
   s.swift_version = "5.0"
@@ -34,8 +34,8 @@ TODO: Add long description of the pod here.
       "ios" : "12.0"
   }
 
-  #  s.source_files = 'EVPlayer/Classes/**/*'
   s.source_files = 'Source/*.{h,m,swift}'
+  s.resource = 'Example/Pods/Resources/**/*'
   
   # s.resource_bundles = {
   #   'EVPlayer' => ['EVPlayer/Assets/*.png']

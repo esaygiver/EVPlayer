@@ -7,6 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		054C666829C45490007810C6 /* EVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666729C45490007810C6 /* EVPlayer.swift */; };
+		054C667529C454D0007810C6 /* EVVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666C29C454D0007810C6 /* EVVolumeView.swift */; };
+		054C667629C454D0007810C6 /* EVBufferingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666D29C454D0007810C6 /* EVBufferingView.swift */; };
+		054C667729C454D0007810C6 /* EVPlayerPropertiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666E29C454D0007810C6 /* EVPlayerPropertiesView.swift */; };
+		054C667829C454D0007810C6 /* EVThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666F29C454D0007810C6 /* EVThumbnailView.swift */; };
+		054C667929C454D0007810C6 /* EVEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C667029C454D0007810C6 /* EVEmptyView.swift */; };
+		054C667A29C454D0007810C6 /* EVBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C667129C454D0007810C6 /* EVBaseView.swift */; };
+		054C667B29C454D0007810C6 /* EVCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C667229C454D0007810C6 /* EVCoverView.swift */; };
+		054C667C29C454D0007810C6 /* EVOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C667329C454D0007810C6 /* EVOverlayView.swift */; };
+		054C667D29C454D0007810C6 /* EVSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C667429C454D0007810C6 /* EVSliderView.swift */; };
+		054C668429C454DC007810C6 /* StateImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C667F29C454DC007810C6 /* StateImpl.swift */; };
+		054C668529C454DC007810C6 /* WorkerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668029C454DC007810C6 /* WorkerImpl.swift */; };
+		054C668629C454DC007810C6 /* UIImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668129C454DC007810C6 /* UIImpl.swift */; };
+		054C668729C454DC007810C6 /* ObserverImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668229C454DC007810C6 /* ObserverImpl.swift */; };
+		054C668829C454DC007810C6 /* PlayerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668329C454DC007810C6 /* PlayerImpl.swift */; };
+		054C668B29C454EB007810C6 /* EVMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668A29C454EB007810C6 /* EVMedia.swift */; };
+		054C669229C45506007810C6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668D29C45506007810C6 /* Constants.swift */; };
+		054C669329C45506007810C6 /* EVConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C668F29C45506007810C6 /* EVConfiguration.swift */; };
+		054C669429C45506007810C6 /* EVPlayerCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C669129C45506007810C6 /* EVPlayerCache.swift */; };
+		054C669729C4551D007810C6 /* EVTapGestureOrganizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C669629C4551D007810C6 /* EVTapGestureOrganizer.swift */; };
+		054C669B29C45525007810C6 /* EVViewDefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C669929C45525007810C6 /* EVViewDefaultLogger.swift */; };
+		054C669C29C45525007810C6 /* EVViewLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C669A29C45525007810C6 /* EVViewLogger.swift */; };
+		054C66A029C4552F007810C6 /* EVFullScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C669E29C4552F007810C6 /* EVFullScreenView.swift */; };
+		054C66A129C4552F007810C6 /* EVPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C669F29C4552F007810C6 /* EVPlayerController.swift */; };
+		054C66A529C45541007810C6 /* NSLayoutXAxisAnchor + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C66A329C45541007810C6 /* NSLayoutXAxisAnchor + Extensions.swift */; };
+		054C66A629C45541007810C6 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C66A429C45541007810C6 /* UIView + Extensions.swift */; };
+		054C66A929C45614007810C6 /* EVVideoState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C66A829C45614007810C6 /* EVVideoState.swift */; };
+		054C66AB29C4564D007810C6 /* EVPlayerAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054C66AA29C4564D007810C6 /* EVPlayerAssets.xcassets */; };
+		054C66AE29C46EA1007810C6 /* EVFullScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C66AD29C46EA1007810C6 /* EVFullScreenState.swift */; };
 		0916AFBB13A3C31638DFBD6BD5E206D6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		42ABA48C939EDAA756FBF170826352D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		46F140EB1FB669B50FD1996F00A6C714 /* EVPlayer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = EA599ABA994E7E06FC8B7867249E74D2 /* EVPlayer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +66,35 @@
 
 /* Begin PBXFileReference section */
 		04783014BB2A06A6E57AAF12885FACB5 /* Pods-EVPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EVPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		054C666729C45490007810C6 /* EVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVPlayer.swift; sourceTree = "<group>"; };
+		054C666C29C454D0007810C6 /* EVVolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVVolumeView.swift; sourceTree = "<group>"; };
+		054C666D29C454D0007810C6 /* EVBufferingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVBufferingView.swift; sourceTree = "<group>"; };
+		054C666E29C454D0007810C6 /* EVPlayerPropertiesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVPlayerPropertiesView.swift; sourceTree = "<group>"; };
+		054C666F29C454D0007810C6 /* EVThumbnailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVThumbnailView.swift; sourceTree = "<group>"; };
+		054C667029C454D0007810C6 /* EVEmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVEmptyView.swift; sourceTree = "<group>"; };
+		054C667129C454D0007810C6 /* EVBaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVBaseView.swift; sourceTree = "<group>"; };
+		054C667229C454D0007810C6 /* EVCoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVCoverView.swift; sourceTree = "<group>"; };
+		054C667329C454D0007810C6 /* EVOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVOverlayView.swift; sourceTree = "<group>"; };
+		054C667429C454D0007810C6 /* EVSliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVSliderView.swift; sourceTree = "<group>"; };
+		054C667F29C454DC007810C6 /* StateImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateImpl.swift; sourceTree = "<group>"; };
+		054C668029C454DC007810C6 /* WorkerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkerImpl.swift; sourceTree = "<group>"; };
+		054C668129C454DC007810C6 /* UIImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImpl.swift; sourceTree = "<group>"; };
+		054C668229C454DC007810C6 /* ObserverImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObserverImpl.swift; sourceTree = "<group>"; };
+		054C668329C454DC007810C6 /* PlayerImpl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerImpl.swift; sourceTree = "<group>"; };
+		054C668A29C454EB007810C6 /* EVMedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVMedia.swift; sourceTree = "<group>"; };
+		054C668D29C45506007810C6 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		054C668F29C45506007810C6 /* EVConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVConfiguration.swift; sourceTree = "<group>"; };
+		054C669129C45506007810C6 /* EVPlayerCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVPlayerCache.swift; sourceTree = "<group>"; };
+		054C669629C4551D007810C6 /* EVTapGestureOrganizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVTapGestureOrganizer.swift; sourceTree = "<group>"; };
+		054C669929C45525007810C6 /* EVViewDefaultLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVViewDefaultLogger.swift; sourceTree = "<group>"; };
+		054C669A29C45525007810C6 /* EVViewLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVViewLogger.swift; sourceTree = "<group>"; };
+		054C669E29C4552F007810C6 /* EVFullScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVFullScreenView.swift; sourceTree = "<group>"; };
+		054C669F29C4552F007810C6 /* EVPlayerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVPlayerController.swift; sourceTree = "<group>"; };
+		054C66A329C45541007810C6 /* NSLayoutXAxisAnchor + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutXAxisAnchor + Extensions.swift"; sourceTree = "<group>"; };
+		054C66A429C45541007810C6 /* UIView + Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
+		054C66A829C45614007810C6 /* EVVideoState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVVideoState.swift; sourceTree = "<group>"; };
+		054C66AA29C4564D007810C6 /* EVPlayerAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = EVPlayerAssets.xcassets; sourceTree = "<group>"; };
+		054C66AD29C46EA1007810C6 /* EVFullScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVFullScreenState.swift; sourceTree = "<group>"; };
 		07065CBB3097971958BA756C1A613427 /* EVPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "EVPlayer-dummy.m"; sourceTree = "<group>"; };
 		0AA2A7C26321450F893C547B4DB2C1EE /* Pods-EVPlayer_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EVPlayer_Tests-umbrella.h"; sourceTree = "<group>"; };
 		0B86A6A56D62604DF11594801228C7B1 /* Pods-EVPlayer_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-EVPlayer_Tests"; path = Pods_EVPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,12 +113,12 @@
 		8BD08576583259DB05781724BAD49B59 /* Pods-EVPlayer_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EVPlayer_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		929C781349A2AF74A4675597D53CF9D7 /* Pods-EVPlayer_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-EVPlayer_Example-umbrella.h"; sourceTree = "<group>"; };
 		96EE3419C1051C467F2E682ED6F7A2F9 /* EVPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EVPlayer.debug.xcconfig; sourceTree = "<group>"; };
-		982238A5457BF88EA40EE6D0F2048AF4 /* Pods-EVPlayer_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-EVPlayer_Example"; path = Pods_EVPlayer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		982238A5457BF88EA40EE6D0F2048AF4 /* Pods_EVPlayer_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EVPlayer_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		990C04FEFB473E5CB9B0C47451DE2CB9 /* EVPlayer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "EVPlayer-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A5428A9CBA325B9DBE0F463B30E8BA45 /* EVPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = EVPlayer.release.xcconfig; sourceTree = "<group>"; };
 		A5466AB47A5037F65BB8B78AB2514B18 /* Pods-EVPlayer_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EVPlayer_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		AA9FD167BB4F535A4DD7586C91BE4AC0 /* EVPlayer */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = EVPlayer; path = EVPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA9FD167BB4F535A4DD7586C91BE4AC0 /* EVPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EVPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C226725DCC2A5FEACC267A8C7E4C0D40 /* Pods-EVPlayer_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-EVPlayer_Example-Info.plist"; sourceTree = "<group>"; };
 		CCC1511109DAE1D501BF71592B089C00 /* Pods-EVPlayer_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-EVPlayer_Tests.modulemap"; sourceTree = "<group>"; };
 		D784F4F48F2FDF25959EB8F9AEE7820D /* Pods-EVPlayer_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-EVPlayer_Example-dummy.m"; sourceTree = "<group>"; };
@@ -101,8 +159,8 @@
 		030C8965371EDC81E9D4AFCEC36DA715 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AA9FD167BB4F535A4DD7586C91BE4AC0 /* EVPlayer */,
-				982238A5457BF88EA40EE6D0F2048AF4 /* Pods-EVPlayer_Example */,
+				AA9FD167BB4F535A4DD7586C91BE4AC0 /* EVPlayer.framework */,
+				982238A5457BF88EA40EE6D0F2048AF4 /* Pods_EVPlayer_Example.framework */,
 				0B86A6A56D62604DF11594801228C7B1 /* Pods-EVPlayer_Tests */,
 			);
 			name = Products;
@@ -111,8 +169,132 @@
 		054C666329C3B3E1007810C6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				054C666729C45490007810C6 /* EVPlayer.swift */,
+				054C669D29C4552F007810C6 /* Controller */,
+				054C666B29C454D0007810C6 /* Views */,
+				054C66A729C45614007810C6 /* State */,
+				054C667E29C454DC007810C6 /* Interfaces */,
+				054C669029C45506007810C6 /* Cache */,
+				054C668E29C45506007810C6 /* Configuration */,
+				054C668C29C45506007810C6 /* Constants */,
+				054C668929C454EB007810C6 /* Media */,
+				054C669529C4551D007810C6 /* GestureOrganizer */,
+				054C669829C45525007810C6 /* Logger */,
+				054C66A229C45541007810C6 /* Extensions */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		054C666B29C454D0007810C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				054C666C29C454D0007810C6 /* EVVolumeView.swift */,
+				054C666D29C454D0007810C6 /* EVBufferingView.swift */,
+				054C666E29C454D0007810C6 /* EVPlayerPropertiesView.swift */,
+				054C666F29C454D0007810C6 /* EVThumbnailView.swift */,
+				054C667029C454D0007810C6 /* EVEmptyView.swift */,
+				054C667129C454D0007810C6 /* EVBaseView.swift */,
+				054C667229C454D0007810C6 /* EVCoverView.swift */,
+				054C667329C454D0007810C6 /* EVOverlayView.swift */,
+				054C667429C454D0007810C6 /* EVSliderView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		054C667E29C454DC007810C6 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				054C668129C454DC007810C6 /* UIImpl.swift */,
+				054C667F29C454DC007810C6 /* StateImpl.swift */,
+				054C668029C454DC007810C6 /* WorkerImpl.swift */,
+				054C668229C454DC007810C6 /* ObserverImpl.swift */,
+				054C668329C454DC007810C6 /* PlayerImpl.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		054C668929C454EB007810C6 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				054C668A29C454EB007810C6 /* EVMedia.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		054C668C29C45506007810C6 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				054C668D29C45506007810C6 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		054C668E29C45506007810C6 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				054C668F29C45506007810C6 /* EVConfiguration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		054C669029C45506007810C6 /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				054C669129C45506007810C6 /* EVPlayerCache.swift */,
+			);
+			path = Cache;
+			sourceTree = "<group>";
+		};
+		054C669529C4551D007810C6 /* GestureOrganizer */ = {
+			isa = PBXGroup;
+			children = (
+				054C669629C4551D007810C6 /* EVTapGestureOrganizer.swift */,
+			);
+			path = GestureOrganizer;
+			sourceTree = "<group>";
+		};
+		054C669829C45525007810C6 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				054C669929C45525007810C6 /* EVViewDefaultLogger.swift */,
+				054C669A29C45525007810C6 /* EVViewLogger.swift */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
+		054C669D29C4552F007810C6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				054C669E29C4552F007810C6 /* EVFullScreenView.swift */,
+				054C66AD29C46EA1007810C6 /* EVFullScreenState.swift */,
+				054C669F29C4552F007810C6 /* EVPlayerController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		054C66A229C45541007810C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				054C66A329C45541007810C6 /* NSLayoutXAxisAnchor + Extensions.swift */,
+				054C66A429C45541007810C6 /* UIView + Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		054C66A729C45614007810C6 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				054C66A829C45614007810C6 /* EVVideoState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		054C66AF29C48725007810C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				054C66AA29C4564D007810C6 /* EVPlayerAssets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		07F6DC8AE14A6C3250F9A7D6460DD39A /* Development Pods */ = {
@@ -187,6 +369,7 @@
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
+				054C66AF29C48725007810C6 /* Resources */,
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				07F6DC8AE14A6C3250F9A7D6460DD39A /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
@@ -273,7 +456,7 @@
 			);
 			name = EVPlayer;
 			productName = EVPlayer;
-			productReference = AA9FD167BB4F535A4DD7586C91BE4AC0 /* EVPlayer */;
+			productReference = AA9FD167BB4F535A4DD7586C91BE4AC0 /* EVPlayer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6D62ACF8BCB8D8AB91A7872B75154762 /* Pods-EVPlayer_Example */ = {
@@ -292,7 +475,7 @@
 			);
 			name = "Pods-EVPlayer_Example";
 			productName = Pods_EVPlayer_Example;
-			productReference = 982238A5457BF88EA40EE6D0F2048AF4 /* Pods-EVPlayer_Example */;
+			productReference = 982238A5457BF88EA40EE6D0F2048AF4 /* Pods_EVPlayer_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A3827AF90AAD8B35F356A816839A0F92 /* Pods-EVPlayer_Tests */ = {
@@ -322,6 +505,11 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					4BAF0BA169763C8AA77888CF6448F905 = {
+						LastSwiftMigration = 1420;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -355,6 +543,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054C66AB29C4564D007810C6 /* EVPlayerAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,7 +561,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				054C66A929C45614007810C6 /* EVVideoState.swift in Sources */,
+				054C667529C454D0007810C6 /* EVVolumeView.swift in Sources */,
+				054C668B29C454EB007810C6 /* EVMedia.swift in Sources */,
+				054C668629C454DC007810C6 /* UIImpl.swift in Sources */,
+				054C667B29C454D0007810C6 /* EVCoverView.swift in Sources */,
+				054C667C29C454D0007810C6 /* EVOverlayView.swift in Sources */,
 				F8EF824FF54FE2DECCDC0C3C1B9E00BD /* EVPlayer-dummy.m in Sources */,
+				054C66A129C4552F007810C6 /* EVPlayerController.swift in Sources */,
+				054C667829C454D0007810C6 /* EVThumbnailView.swift in Sources */,
+				054C667729C454D0007810C6 /* EVPlayerPropertiesView.swift in Sources */,
+				054C66AE29C46EA1007810C6 /* EVFullScreenState.swift in Sources */,
+				054C66A529C45541007810C6 /* NSLayoutXAxisAnchor + Extensions.swift in Sources */,
+				054C667A29C454D0007810C6 /* EVBaseView.swift in Sources */,
+				054C668529C454DC007810C6 /* WorkerImpl.swift in Sources */,
+				054C66A029C4552F007810C6 /* EVFullScreenView.swift in Sources */,
+				054C669429C45506007810C6 /* EVPlayerCache.swift in Sources */,
+				054C669B29C45525007810C6 /* EVViewDefaultLogger.swift in Sources */,
+				054C669729C4551D007810C6 /* EVTapGestureOrganizer.swift in Sources */,
+				054C667929C454D0007810C6 /* EVEmptyView.swift in Sources */,
+				054C668829C454DC007810C6 /* PlayerImpl.swift in Sources */,
+				054C668729C454DC007810C6 /* ObserverImpl.swift in Sources */,
+				054C669329C45506007810C6 /* EVConfiguration.swift in Sources */,
+				054C667629C454D0007810C6 /* EVBufferingView.swift in Sources */,
+				054C668429C454DC007810C6 /* StateImpl.swift in Sources */,
+				054C667D29C454D0007810C6 /* EVSliderView.swift in Sources */,
+				054C666829C45490007810C6 /* EVPlayer.swift in Sources */,
+				054C669C29C45525007810C6 /* EVViewLogger.swift in Sources */,
+				054C66A629C45541007810C6 /* UIView + Extensions.swift in Sources */,
+				054C669229C45506007810C6 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +631,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 96EE3419C1051C467F2E682ED6F7A2F9 /* EVPlayer.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -426,7 +644,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/EVPlayer/EVPlayer-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/EVPlayer/EVPlayer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/EVPlayer/EVPlayer.modulemap";
 				PRODUCT_MODULE_NAME = EVPlayer;
@@ -434,6 +652,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -490,7 +709,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-EVPlayer_Example/Pods-EVPlayer_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EVPlayer_Example/Pods-EVPlayer_Example.modulemap";
@@ -606,6 +825,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A5428A9CBA325B9DBE0F463B30E8BA45 /* EVPlayer.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -618,7 +838,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/EVPlayer/EVPlayer-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/EVPlayer/EVPlayer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/EVPlayer/EVPlayer.modulemap";
 				PRODUCT_MODULE_NAME = EVPlayer;
@@ -650,7 +870,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-EVPlayer_Example/Pods-EVPlayer_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-EVPlayer_Example/Pods-EVPlayer_Example.modulemap";
