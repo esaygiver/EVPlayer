@@ -13,7 +13,7 @@ enum LogType {
 }
 
 /// Represents a class will log events.
-protocol EVViewLogger {
+protocol EVPlayerLogger {
     
     /// Whether to log or not
     var log: Bool { get set }
@@ -29,7 +29,7 @@ protocol EVViewLogger {
     func error(_ message: @autoclosure () -> String)
 }
 
-extension EVViewLogger {
+extension EVPlayerLogger {
     
     /// Default implementation.
     func log(_ message: @autoclosure () -> String, type: LogType = .none) {

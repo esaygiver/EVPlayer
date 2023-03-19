@@ -17,7 +17,6 @@ public class EVPlayerController: UIViewController {
     private(set) var configuration: EVConfiguration?
     private let dismissButton = UIButton(type: .custom)
     
-    private(set) var willDismiss = false
     private var willDismissCallback: EVConfigCallback?
     private var didDismissCallback: EVDefaultCallback?
     
@@ -47,7 +46,7 @@ public class EVPlayerController: UIViewController {
     }
     
     deinit {
-        EVViewDefaultLogger.logger.log("EVPlayerController", type: .deinited)
+        EVDefaultLogger.logger.log("EVPlayerController", type: .deinited)
     }
     
     // MARK: - Life Cycle
@@ -100,7 +99,7 @@ public class EVPlayerController: UIViewController {
         didDismissCallback: EVDefaultCallback? = nil) {
             
             guard let rootVC = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
-                EVViewDefaultLogger.logger.error("\(#file), there is no root!")
+                EVDefaultLogger.logger.error("\(#file), there is no root!")
                 return
             }
             
@@ -133,13 +132,14 @@ extension EVPlayerController {
         guard let player = videoContainerView.player else {
             return
         }
+                
+        let dismissContext = EVTransactionContext(seekTime: player.currentTime(),
+                                                  isMuted: player.isMuted,
+                                                  volume: player.volume)
         
-        willDismiss = true
+        let dismissConfig = EVConfiguration(state: videoContainerView.videoState,
+                                            context: dismissContext)
         
-        let dismissConfig = EVConfiguration(initialState: videoContainerView.videoState,
-                                            seekTime: player.currentTime(),
-                                            isMuted: player.isMuted,
-                                            volume: player.volume)
         willDismissCallback?(dismissConfig)
     }
 }

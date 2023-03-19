@@ -9,6 +9,7 @@ import UIKit
 
 protocol EVCoverViewDelegate: AnyObject {
     func play()
+    func pause()
     func rewind(_ seconds: Double)
     func forward(_ seconds: Double)
     func volume(_ val: Float)
@@ -36,7 +37,7 @@ public class EVCoverView: EVBaseView {
     private(set) var rewindDuration: Double = 10
     
     override func setup() {
-        backgroundColor = .darkGray.withAlphaComponent(0.25)
+        backgroundColor = .darkGray.withAlphaComponent(0.1)
         isHidden = true
         isUserInteractionEnabled = true
         
@@ -54,7 +55,7 @@ public class EVCoverView: EVBaseView {
         coverPlayButton.setTitle("", for: .normal)
         coverPlayButton.backgroundColor = .clear
         coverPlayButton.adjustsImageWhenHighlighted = false
-        coverPlayButton.addTarget(self, action: #selector(playEvent), for: .touchUpInside)
+        coverPlayButton.addTarget(self, action: #selector(togglePlayingStatus), for: .touchUpInside)
         coverPlayButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         
         coverRewindButton.tintColor = .white
@@ -115,7 +116,7 @@ public class EVCoverView: EVBaseView {
         
         volumeView.cuiPinTrailingToSuperView(constant: -6)
         volumeView.cuiPinTopToSuperView(constant: 6)
-        volumeView.widthAnchor.cuiSet(to: 85)
+        volumeView.widthAnchor.cuiSet(to: 70)
         volumeView.heightAnchor.cuiSet(to: 20)
         
         fullScreenButton.widthAnchor.cuiSet(to: 20)
@@ -181,10 +182,16 @@ public class EVCoverView: EVBaseView {
 extension EVCoverView {
     
     @objc
-    private func playEvent() {
+    private func togglePlayingStatus() {
         isPlaying.toggle()
-        isPlaying ? changePlayButtonImageToPauseWithAnimation() : changePlayButtonImageToPlayWithAnimation()
-        delegate?.play()
+        
+        if isPlaying {
+            delegate?.play()
+            changePlayButtonImageToPauseWithAnimation()
+        } else {
+            delegate?.pause()
+            changePlayButtonImageToPlayWithAnimation()
+        }
     }
     
     @objc

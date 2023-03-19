@@ -80,6 +80,10 @@ extension EVObserverProtocol where Self: EVPlayer {
         NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player?.currentItem, queue: .main) { [weak self] _ in
             guard let strongSelf = self else { return }
             
+            if let shouldLoop = strongSelf.configuration?.shouldLoopVideo, shouldLoop {
+                strongSelf.updateState(to: .restart)
+                return
+            }
             strongSelf.updateState(to: .ended)
         }
     }

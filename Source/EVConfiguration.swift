@@ -9,12 +9,12 @@ import Foundation
 import AVKit
 
 public protocol EVConfigurationInterface {
-    var media: EVMedia? { get }
+    var media: EVMediaInterface? { get }
     var initialState: EVVideoState? { get }
-    var seekTime: CMTime? { get }
-    var isMuted: Bool? { get }
-    var volume: Float? { get }
+    var context: EVTransactionContextInterface? { get }
     
+    var shouldAutoPlay: Bool { get }
+    var shouldLoopVideo: Bool { get }
     var forwardSeekDuration: EVSeekDuration { get }
     var rewindSeekDuration: EVSeekDuration { get }
     var videoGravity: AVLayerVideoGravity { get }
@@ -28,31 +28,37 @@ public protocol EVConfigurationInterface {
 }
 
 public struct EVConfiguration: EVConfigurationInterface {
-    public let media: EVMedia?
+    public let media: EVMediaInterface?
     public var initialState: EVVideoState?
+    public var context: EVTransactionContextInterface?
     public var seekTime: CMTime?
     public var isMuted: Bool?
     public var volume: Float?
-    
-    /// Cache url assets and improves reuse
-    public var assetCacher: EVPlayerCacheability
+    public var assetCacher: EVPlayerCacheability = EVPlayerCache.shared
     
     // MARK: - Initializer
     
-    public init(media: EVMedia? = nil,
-                initialState: EVVideoState? = nil,
-                seekTime: CMTime? = nil,
-                isMuted: Bool? = nil,
-                volume: Float? = nil,
-                playerCacher: EVPlayerCacheability = EVPlayerCache.shared) {
+    public init(media: EVMediaInterface? = nil,
+                state: EVVideoState? = .thumbnail,
+                context: EVTransactionContextInterface? = nil) {
         
-        self.initialState = initialState
+        self.initialState = state
         self.media = media
-        self.seekTime = seekTime
-        self.isMuted = isMuted
-        self.volume = volume
-        self.assetCacher = playerCacher
+        self.context = context
+        self.seekTime = context?.seekTime
+        self.isMuted = context?.isMuted
+        self.volume = context?.volume
     }
+    
+    /// Set auto play status, default is true
+    public var shouldAutoPlay: Bool = false {
+        didSet {
+            initialState = .quickPlay
+        }
+    }
+    
+    /// Restart video when playback did end, default is false
+    public var shouldLoopVideo: Bool = false
     
     /// Seek forward player value, the default is 10 sec
     public var forwardSeekDuration: EVSeekDuration = .k10

@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .black
+        
         configureEVPlayer()
     }
     
@@ -36,8 +38,10 @@ class ViewController: UIViewController {
         evPlayer.delegate = self
         evPlayer.center = view.center
         
-        let config = EVConfiguration(media: media,
-                                     initialState: .quickPlay)
+        var config = EVConfiguration(media: media)
+        config.shouldAutoPlay = true
+        config.isFullScreenShouldOpenWithLandscapeMode = true
+//        config.shouldLoopVideo = true
         evPlayer.load(with: config)
     }
     

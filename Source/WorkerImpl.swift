@@ -18,16 +18,19 @@ extension EVWorkerProtocol where Self: EVPlayer  {
         guard let media = config.media,
               let url = media.mediaURL else {
             updateState(to: .empty)
-            EVViewDefaultLogger.logger.error("\(#function), media url is nil, check out configuration file")
+            EVDefaultLogger.logger.error("\(#function), media url is nil, check out configuration file")
             return
         }
         
-        self.configuration = config
+        configuration = config
 
         updateForwardDuration(to: config.forwardSeekDuration)
         updateRewindDuration(to: config.rewindSeekDuration)
+        
         thumbnailView.updateThumbnailImage(to: config.media?.thumbnailURL)
+        
         createPlayer(with: url)
+        
         updateState(to: config.initialState)
     }
     

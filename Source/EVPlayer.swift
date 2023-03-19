@@ -16,7 +16,7 @@ public protocol EVPlayerDelegate: AnyObject {
 
 open class EVPlayer: UIView {
     
-    // MARK: - UI Properties
+    // MARK: - UI
     
     let videoLayer = UIView()
     let thumbnailView = EVThumbnailView()
@@ -28,8 +28,12 @@ open class EVPlayer: UIView {
     lazy var singleTapGR = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
     lazy var doubleTapGR = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
     
-    // MARK: - Logic Properties
+    // MARK: - Logic
     
+    public weak var delegate: EVPlayerDelegate?
+
+    var configuration: EVConfiguration?
+
     // Player
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
@@ -39,11 +43,7 @@ open class EVPlayer: UIView {
     var timeObserver: Any?
     var progressBarHighlightedObserver: NSKeyValueObservation?
     
-    public weak var delegate: EVPlayerDelegate?
-    
-    var configuration: EVConfiguration?
-        
-    lazy var videoState: EVVideoState = .empty {
+    lazy var videoState: EVVideoState = .thumbnail {
         didSet {
             delegate?.evPlayer(stateDidChangedTo: videoState)
         }
@@ -62,7 +62,7 @@ open class EVPlayer: UIView {
     
     deinit {
         prepareForReuse()
-        EVViewDefaultLogger.logger.log("EVView", type: .deinited)
+        EVDefaultLogger.logger.log("EVView", type: .deinited)
     }
     
     public override func layoutSublayers(of layer: CALayer) {
@@ -127,7 +127,11 @@ extension EVPlayer: EVNavigationAdapter { }
 extension EVPlayer: EVCoverViewDelegate {
         
     public func play() {
-        updateState(to: videoState == .pause ? .play : .pause)
+        updateState(to: .play)
+    }
+    
+    public func pause() {
+        updateState(to: .pause)
     }
     
     func rewind(_ seconds: Double) {

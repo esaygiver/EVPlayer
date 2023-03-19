@@ -69,18 +69,18 @@ public class EVThumbnailView: EVBaseView {
     
     private func downloadThumbnailImage(from url: URL?) {
         guard let url = url else {
-            EVViewDefaultLogger.logger.error("\(#function), thumbnail url is nil!")
+            EVDefaultLogger.logger.error("\(#function), thumbnail url is nil!")
             return
         }
 
         URLSession.shared.dataTask(with: url) { (data, _, error) in
             guard error == nil else {
-                EVViewDefaultLogger.logger.error(error!.localizedDescription)
+                EVDefaultLogger.logger.error(error!.localizedDescription)
                 return
             }
             
             guard let data = data else {
-                EVViewDefaultLogger.logger.error("\(#file), data is nil for \(url.absoluteString)")
+                EVDefaultLogger.logger.error("\(#file), data is nil for \(url.absoluteString)")
                 return
             }
             
