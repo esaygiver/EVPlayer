@@ -9,22 +9,16 @@ import UIKit
 import AVKit
 
 public protocol EVPlayerDelegate: AnyObject {
-    func stateDidChanged(player: AVPlayer?, to state: EVVideoState)
-    func playTimeDidChanged(player: AVPlayer?, currentTime: Double, totalTime: Double, loadedRange: String)
-    func fullScreenTransactionUpdate(to state: EVFullScreenState)
-}
-
-extension EVPlayerDelegate {
-    func stateDidChanged(player: AVPlayer?, to state: EVVideoState) { }
-    func playTimeDidChanged(player: AVPlayer?, currentTime: Double, totalTime: Double, loadedRange: String) { }
-    func fullScreenTransactionUpdate(to state: EVFullScreenState) { }
+    func evPlayer(stateDidChangedTo state: EVVideoState)
+    func evPlayer(timeChangedTo currentTime: Double, totalTime: Double, loadedRange: Double)
+    func evPlayer(fullScreenTransactionUpdateTo state: EVFullScreenState)
 }
 
 open class EVPlayer: UIView {
     
     // MARK: - UI Properties
     
-    let videoStreamView = UIView()
+    let videoLayer = UIView()
     let thumbnailView = EVThumbnailView()
     let coverView = EVCoverView()
     let propertiesStackView = EVPlayerPropertiesView()
@@ -46,16 +40,14 @@ open class EVPlayer: UIView {
     var timeObserver: Any?
     var progressBarHighlightedObserver: NSKeyValueObservation?
     
-    // Delegate
     public weak var delegate: EVPlayerDelegate?
     
-    // Setup Configuration
     var configuration: EVConfiguration?
         
     // State
     lazy var videoState: EVVideoState = .empty {
         didSet {
-            delegate?.stateDidChanged(player: player, to: videoState)
+            delegate?.evPlayer(stateDidChangedTo: videoState)
         }
     }
     
@@ -88,7 +80,7 @@ open class EVPlayer: UIView {
         progressBarHighlightedObserver?.invalidate()
         progressBarHighlightedObserver = nil
         NotificationCenter.default.removeObserver(self)
-        videoStreamView.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        videoLayer.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         if let timeObserverToken = timeObserver {
             player?.removeTimeObserver(timeObserverToken)
             timeObserver = nil
@@ -126,6 +118,9 @@ extension EVPlayer: EVObserverProtocol { }
 /// state updater
 extension EVPlayer: EVStateProtocol { }
 
+// Implementation of EVNavigationAdapter
+/// Public state updater for parent
+extension EVPlayer: EVNavigationAdapter { }
 
 // MARK: - Delegates
 
@@ -133,7 +128,7 @@ extension EVPlayer: EVStateProtocol { }
 
 extension EVPlayer: EVCoverViewDelegate {
         
-    func play() {
+    public func play() {
         updateState(to: videoState == .pause ? .play : .pause)
     }
     
@@ -186,7 +181,7 @@ extension EVPlayer: EVCoverViewDelegate {
             return
         }
         
-        delegate?.fullScreenTransactionUpdate(to: .willEnter)
+        delegate?.evPlayer(fullScreenTransactionUpdateTo: .willEnter)
         
         var fsConfig = config
         fsConfig.initialState = videoState
@@ -200,7 +195,8 @@ extension EVPlayer: EVCoverViewDelegate {
         EVPlayerController.show(withConfiguration: fsConfig, presentCallback: { [weak self] in
             guard let strongSelf = self else { return }
             
-            strongSelf.delegate?.fullScreenTransactionUpdate(to: .didEnter)
+            strongSelf.delegate?.evPlayer(fullScreenTransactionUpdateTo: .didEnter)
+
 
         }, willDismissCallback: { [weak self] config in
             guard let strongSelf = self else { return }
@@ -208,12 +204,12 @@ extension EVPlayer: EVCoverViewDelegate {
             strongSelf.applyConfiguration(config)
             strongSelf.seek(to: config.seekTime, continueFrom: config.initialState)
             
-            strongSelf.delegate?.fullScreenTransactionUpdate(to: .willDismiss)
+            strongSelf.delegate?.evPlayer(fullScreenTransactionUpdateTo: .willDismiss)
 
         }, didDismissCallback: { [weak self] in
             guard let strongSelf = self else { return }
 
-            strongSelf.delegate?.fullScreenTransactionUpdate(to: .didDismiss)
+            strongSelf.delegate?.evPlayer(fullScreenTransactionUpdateTo: .didDismiss)
         })
     }
 }
@@ -240,10 +236,10 @@ extension EVPlayer {
     private func handleDoubleTap(sender: UITapGestureRecognizer) {
         if sender.state == .ended {
             
-            if (sender.location(ofTouch: 0, in: videoStreamView).x + 75) < videoStreamView.bounds.midX { // Rewind
+            if (sender.location(ofTouch: 0, in: videoLayer).x + 75) < videoLayer.bounds.midX { // Rewind
                 coverView.rewindEvent()
                 
-            } else if sender.location(ofTouch: 0, in: videoStreamView).x > (videoStreamView.bounds.midX + 75) { // Forward
+            } else if sender.location(ofTouch: 0, in: videoLayer).x > (videoLayer.bounds.midX + 75) { // Forward
                 coverView.forwardEvent()
                 
             } else {

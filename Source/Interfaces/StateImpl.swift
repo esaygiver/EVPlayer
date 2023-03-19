@@ -38,6 +38,7 @@ extension EVStateProtocol where Self: EVPlayer {
             player?.pause()
             
         case .thumbnail:
+            updateState(to: .pause)
             bringSubview(toFront: thumbnailView)
             thumbnailView.isHidden = false
             propertiesStackView.isHidden = true

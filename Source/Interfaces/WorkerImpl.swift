@@ -32,15 +32,15 @@ extension EVWorkerProtocol where Self: EVPlayer  {
     }
     
     public func createPlayer(with url: URL) {
-        if let avAssetFromCache = configuration?.playerCacher.asset(for: url) {
+        if let avAssetFromCache = configuration?.assetCacher.asset(for: url) {
             setPlayerItem(with: avAssetFromCache)
             setPlayer()
             setPlayerLayer()
-            addObservers()
+            setObservers()
             
         } else {
             let avAsset = AVAsset(url: url)
-            configuration?.playerCacher.add(asset: avAsset, for: url)
+            configuration?.assetCacher.add(asset: avAsset, for: url)
             createPlayer(with: url)
         }
     }

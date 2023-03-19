@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import AVKit
 import EVPlayer
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var goButton: UIButton!
+    
     var evPlayer: EVPlayer!
     
     let media = EVMedia(mediaURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"),
@@ -22,6 +23,11 @@ class ViewController: UIViewController {
 
         configureEVPlayer()
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        evPlayer.changeStateForNavigationChanges(to: .play)
+//    }
     
     private func configureEVPlayer() {
         evPlayer = EVPlayer(frame: CGRect(x: 0, y: 0, width: 350, height: 200))
@@ -34,20 +40,26 @@ class ViewController: UIViewController {
                                      initialState: .quickPlay)
         evPlayer.load(with: config)
     }
+    
+    @IBAction private func goTapped() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
+        evPlayer.changeStateForNavigationChanges(to: .pause)
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 extension ViewController: EVPlayerDelegate {
-
-    func stateDidChanged(player: AVPlayer?, to state: EVVideoState) {
+        
+    func evPlayer(stateDidChangedTo state: EVVideoState) {
         print("stateDidChanged", state)
     }
     
-    func playTimeDidChanged(player: AVPlayer?, currentTime: Double, totalTime: Double, loadedRange: String) {
-//        print("DOWNLOADED -> %", loadedRange)
+    func evPlayer(timeChangedTo currentTime: Double, totalTime: Double, loadedRange: Double) {
+        print("loadedRange ->", loadedRange)
     }
     
-    func fullScreenTransactionUpdate(to state: EVFullScreenState) {
-        print("Current FullScreen State:", state)
+    func evPlayer(fullScreenTransactionUpdateTo state: EVFullScreenState) {
+        print("stateDidChanged", state)
     }
 }
 

@@ -17,7 +17,7 @@ public class EVThumbnailView: EVBaseView {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
@@ -42,6 +42,7 @@ public class EVThumbnailView: EVBaseView {
     weak var delegate: EVThumbnailViewDelegate?
     
     override func setup() {
+        backgroundColor = .black
         addSubview(imageView)
         addSubview(alphaView)
         addSubview(centeredButton)

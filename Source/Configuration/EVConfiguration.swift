@@ -8,55 +8,6 @@
 import Foundation
 import AVKit
 
-public enum EVSeekDuration {
-    case k5
-    case k10
-    case k15
-    case k30
-    case k45
-    case k60
-    case k75
-    case k90
-    
-    var value: Double {
-        switch self {
-        case .k5:   return 5
-        case .k10:  return 10
-        case .k15:  return 15
-        case .k30:  return 30
-        case .k45:  return 45
-        case .k60:  return 60
-        case .k75:  return 75
-        case .k90:  return 90
-        }
-    }
-    var forwardImage: UIImage? {
-        switch self {
-        case .k5:   return Constants.Icons.forwardImage5
-        case .k10:  return Constants.Icons.forwardImage10
-        case .k15:  return Constants.Icons.forwardImage15
-        case .k30:  return Constants.Icons.forwardImage30
-        case .k45:  return Constants.Icons.forwardImage45
-        case .k60:  return Constants.Icons.forwardImage60
-        case .k75:  return Constants.Icons.forwardImage75
-        case .k90:  return Constants.Icons.forwardImage90
-        }
-    }
-    
-    var rewindImage: UIImage? {
-        switch self {
-        case .k5:   return Constants.Icons.rewindImage5
-        case .k10:  return Constants.Icons.rewindImage10
-        case .k15:  return Constants.Icons.rewindImage15
-        case .k30:  return Constants.Icons.rewindImage30
-        case .k45:  return Constants.Icons.rewindImage45
-        case .k60:  return Constants.Icons.rewindImage60
-        case .k75:  return Constants.Icons.rewindImage75
-        case .k90:  return Constants.Icons.rewindImage90
-        }
-    }
-}
-
 public protocol EVConfigurationInterface {
     var media: EVMedia? { get }
     var initialState: EVVideoState? { get }
@@ -73,7 +24,7 @@ public protocol EVConfigurationInterface {
     var fullScreenPresentationStyle: UIModalPresentationStyle { get }
     var isSeekAnimationsEnabled: Bool { get }
     var isTransactionAnimated: Bool { get }
-    var playerCacher: EVPlayerCacheability { get }
+    var assetCacher: EVPlayerCacheability { get }
 }
 
 public struct EVConfiguration: EVConfigurationInterface {
@@ -84,10 +35,7 @@ public struct EVConfiguration: EVConfigurationInterface {
     public var volume: Float?
     
     /// Cache url assets and improves reuse
-    public var playerCacher: EVPlayerCacheability
-    
-    /// Has single and double tap events
-    public var gestureOrganizer: EVTapGestureOrganizerImpl
+    public var assetCacher: EVPlayerCacheability
     
     // MARK: - Initializer
     
@@ -96,16 +44,14 @@ public struct EVConfiguration: EVConfigurationInterface {
                 seekTime: CMTime? = nil,
                 isMuted: Bool? = nil,
                 volume: Float? = nil,
-                playerCacher: EVPlayerCacheability = EVPlayerCache.shared,
-                gestureOrganizer: EVTapGestureOrganizerImpl = EVTapGestureOrganizer()) {
+                playerCacher: EVPlayerCacheability = EVPlayerCache.shared) {
         
         self.initialState = initialState
         self.media = media
         self.seekTime = seekTime
         self.isMuted = isMuted
         self.volume = volume
-        self.playerCacher = playerCacher
-        self.gestureOrganizer = gestureOrganizer
+        self.assetCacher = playerCacher
     }
     
     /// Seek forward player value, the default is 10 sec

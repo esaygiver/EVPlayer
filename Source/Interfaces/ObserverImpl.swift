@@ -8,23 +8,23 @@
 import AVKit
 
 protocol EVObserverProtocol {
-    func addObservers()
-    func addTimeObserver()
-    func addProgressBarValueChangedObserver()
+    func setObservers()
+    func setTimeObserver()
+    func setProgressBarValueChangedObserver()
     func addAVPlayerItemDidPlayToEndTimeNotification()
     func addWillResignActiveNotification()
 }
 
 extension EVObserverProtocol where Self: EVPlayer {
     
-    func addObservers() {
-        addTimeObserver()
-        addProgressBarValueChangedObserver()
+    func setObservers() {
+        setTimeObserver()
+        setProgressBarValueChangedObserver()
         addAVPlayerItemDidPlayToEndTimeNotification()
         addWillResignActiveNotification()
     }
     
-    func addTimeObserver() {
+    func setTimeObserver() {
         guard let player = player else { return }
         
         let timeInterval = CMTime(seconds: 1, preferredTimescale: 1)
@@ -45,7 +45,7 @@ extension EVObserverProtocol where Self: EVPlayer {
         })
     }
     
-    func addProgressBarValueChangedObserver() {
+    func setProgressBarValueChangedObserver() {
         progressBarHighlightedObserver = propertiesStackView.videoSlider.observe(\EVSliderView.isTracking, options: [.old, .new]) { [weak self] (_, change) in
             guard let strongSelf = self else { return }
             

@@ -29,7 +29,6 @@ extension EVPlayerProtocol where Self: EVPlayer {
         }
         player = AVPlayer(playerItem: playerItem)
         player?.automaticallyWaitsToMinimizeStalling = true
-        player?.isMuted = true
     }
     
     func setPlayerLayer() {
@@ -38,7 +37,7 @@ extension EVPlayerProtocol where Self: EVPlayer {
         }
         playerLayer = AVPlayerLayer(player: player)
         playerLayer?.videoGravity = configuration?.videoGravity ?? .resize
-        videoStreamView.layer.addSublayer(playerLayer!)
+        videoLayer.layer.addSublayer(playerLayer!)
     }
     
     func seek(to time: CMTime?, continueFrom state: EVVideoState? = nil) {

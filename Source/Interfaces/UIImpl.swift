@@ -41,10 +41,10 @@ extension EVUIProtocol where Self: EVPlayer {
         
     func setupUI() {
         // Video stream layer
-        addSubview(videoStreamView)
-        videoStreamView.backgroundColor = .black
-        videoStreamView.isUserInteractionEnabled = true
-        videoStreamView.cuiPinToSuperview()
+        addSubview(videoLayer)
+        videoLayer.backgroundColor = .black
+        videoLayer.isUserInteractionEnabled = true
+        videoLayer.cuiPinToSuperview()
         
         // thumbnailView
         addSubview(thumbnailView)
@@ -95,13 +95,14 @@ extension EVUIProtocol where Self: EVPlayer {
         }
         
         let progressValue = (progressTime.seconds / duration.seconds) * 100
-        let progressValueStrWithOneCharAfterComma = String(format: "%.1f", progressValue)
-        delegate?.playTimeDidChanged(player: player,
-                                     currentTime: progressTime.seconds,
-                                     totalTime: duration.seconds,
-                                     loadedRange: progressValueStrWithOneCharAfterComma)
         
         propertiesStackView.updateDuration(current: progressTime <= duration ? progressTime : duration, total: duration)
+
+        if let progressValueWithOneCharAfterComma = Double(String(format: "%.1f", progressValue)) {
+            delegate?.evPlayer(timeChangedTo: progressTime.seconds,
+                               totalTime: duration.seconds,
+                               loadedRange: progressValueWithOneCharAfterComma)
+        }
     }
     
     func applyConfiguration(_ configuration: EVConfiguration?) {
@@ -126,15 +127,15 @@ extension EVUIProtocol where Self: EVPlayer {
         }
         
         let overlayView = EVOverlayView(frame: CGRect(x: 0, y: 0,
-                                                      width: videoStreamView.frame.width / 3.5,
-                                                      height: videoStreamView.frame.height),
+                                                      width: videoLayer.frame.width / 3.5,
+                                                      height: videoLayer.frame.height),
                                         type: type)
  
-        videoStreamView.addSubview(overlayView)
+        videoLayer.addSubview(overlayView)
 
         overlayView.cuiPinTopToSuperView()
         overlayView.cuiPinBottomToSuperView()
-        overlayView.widthAnchor.cuiSet(to: videoStreamView.frame.width / 3.5)
+        overlayView.widthAnchor.cuiSet(to: videoLayer.frame.width / 3.5)
         
         switch type {
         case .forward:
@@ -175,10 +176,10 @@ extension EVUIProtocol where Self: EVPlayer {
     
     func setGestureRecognizers() {
         singleTapGR.numberOfTapsRequired = 1
-        videoStreamView.addGestureRecognizer(singleTapGR)
+        videoLayer.addGestureRecognizer(singleTapGR)
         
         doubleTapGR.numberOfTapsRequired = 2
-        videoStreamView.addGestureRecognizer(doubleTapGR)
+        videoLayer.addGestureRecognizer(doubleTapGR)
         
         singleTapGR.require(toFail: doubleTapGR)
     }

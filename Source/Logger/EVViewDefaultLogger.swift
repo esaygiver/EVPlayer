@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct EVViewDefaultLogger: EVViewLogger {
+struct EVViewDefaultLogger: EVViewLogger {
     
     static var logger: EVViewLogger = EVViewDefaultLogger()
     

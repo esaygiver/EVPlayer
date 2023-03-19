@@ -45,8 +45,6 @@ final class EVSliderView: UISlider {
             value = 0
             thumbTintColor = .white
             minimumTrackTintColor = .orange
-            addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
-            addTarget(self, action: #selector(touchUpInside(_:)), for: .touchUpInside)
             setThumbImage(makeSliderImage(size: CGSize(width: 14, height: 14)), for: .normal)
             setThumbImage(makeSliderImage(size: CGSize(width: 18, height: 18)), for: .highlighted)
             
@@ -55,6 +53,8 @@ final class EVSliderView: UISlider {
             value = 1.0
             minimumTrackTintColor = .white
             thumbTintColor = .clear
+            addTarget(self, action: #selector(sliderValueChanged(_:)), for: .valueChanged)
+            addTarget(self, action: #selector(touchUpInside(_:)), for: .touchUpInside)
             setThumbImage(makeSliderImage(size: CGSize(width: 4, height: 4)), for: .normal)
             setThumbImage(makeSliderImage(size: CGSize(width: 4, height: 4)), for: .highlighted)
             self.transform = CGAffineTransform(scaleX: 1.0, y: 1.2)
