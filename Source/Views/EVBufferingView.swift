@@ -16,9 +16,9 @@ public class EVBufferingView: EVBaseView {
         prgView.hidesWhenStopped = true
         prgView.layer.cornerRadius = 12
         if #available(iOS 13.0, *) {
-            prgView.activityIndicatorViewStyle = .medium
+            prgView.style = .medium
         } else {
-            prgView.activityIndicatorViewStyle = .gray
+            prgView.style = .gray
         }
         return prgView
     }()

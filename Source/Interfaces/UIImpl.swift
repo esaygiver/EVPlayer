@@ -71,10 +71,7 @@ extension EVUIProtocol where Self: EVPlayer {
         bufferingView.widthAnchor.cuiSet(to: 40)
         
         // emptyView
-        addSubview(emptyView)
-        emptyView.cuiPinToSuperview()
-        emptyView.backgroundColor = .black
-        emptyView.isHidden = true
+
         
         // Tap Gesture Recognizers
 
@@ -160,14 +157,14 @@ extension EVUIProtocol where Self: EVPlayer {
     func showProgress() {
         DispatchQueue.main.async {
             self.coverView.changePlayButtonImageForBufferState()
-            self.bringSubview(toFront: self.bufferingView)
+            self.bringSubviewToFront(self.bufferingView)
             self.bufferingView.show()
         }
     }
     
     func hideProgress() {
         DispatchQueue.main.async {
-            self.sendSubview(toBack: self.bufferingView)
+            self.sendSubviewToBack(self.bufferingView)
             self.bufferingView.hide { [weak self] in
                 self?.coverView.changePlayButtonImageForLoadedState()
             }

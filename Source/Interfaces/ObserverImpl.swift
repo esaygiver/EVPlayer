@@ -85,7 +85,7 @@ extension EVObserverProtocol where Self: EVPlayer {
     }
     
     func addWillResignActiveNotification() {
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillResignActive, object: nil, queue: .main) { [weak self] _ in
+        NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: .main) { [weak self] _ in
             guard let strongSelf = self else { return }
             
             strongSelf.updateState(to: .pause)

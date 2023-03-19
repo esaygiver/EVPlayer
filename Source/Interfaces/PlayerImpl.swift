@@ -42,7 +42,7 @@ extension EVPlayerProtocol where Self: EVPlayer {
     
     func seek(to time: CMTime?, continueFrom state: EVVideoState? = nil) {
         if let seekTime = time {
-            player?.seek(to: seekTime, toleranceBefore: kCMTimeZero, toleranceAfter: kCMTimeZero, completionHandler: { [weak self] _ in
+            player?.seek(to: seekTime, toleranceBefore: .zero, toleranceAfter: .zero, completionHandler: { [weak self] _ in
                 guard let strongSelf = self else { return }
                 
                 strongSelf.updateUI(with: seekTime)

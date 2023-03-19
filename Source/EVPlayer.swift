@@ -23,7 +23,6 @@ open class EVPlayer: UIView {
     let coverView = EVCoverView()
     let propertiesStackView = EVPlayerPropertiesView()
     let bufferingView = EVBufferingView()
-    let emptyView = EVEmptyView()
     
     // Tap Gestures
     lazy var singleTapGR = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
@@ -44,7 +43,6 @@ open class EVPlayer: UIView {
     
     var configuration: EVConfiguration?
         
-    // State
     lazy var videoState: EVVideoState = .empty {
         didSet {
             delegate?.evPlayer(stateDidChangedTo: videoState)
@@ -143,7 +141,7 @@ extension EVPlayer: EVCoverViewDelegate {
         let cachedState = videoState
         updateState(to: .pause)
         
-        let lastTime: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+        let lastTime: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
         seek(to: lastTime, continueFrom: cachedState)
                 
         showOverlayAnimation(type: .rewind, seek: seconds)
@@ -161,7 +159,7 @@ extension EVPlayer: EVCoverViewDelegate {
             let cachedState = videoState
             updateState(to: .pause)
             
-            let lastTime: CMTime = CMTimeMake(Int64(newTime * 1000 as Float64), 1000)
+            let lastTime: CMTime = CMTimeMake(value: Int64(newTime * 1000 as Float64), timescale: 1000)
             seek(to: lastTime, continueFrom: cachedState)
             
             showOverlayAnimation(type: .forward, seek: seconds)

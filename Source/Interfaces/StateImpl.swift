@@ -39,7 +39,7 @@ extension EVStateProtocol where Self: EVPlayer {
             
         case .thumbnail:
             updateState(to: .pause)
-            bringSubview(toFront: thumbnailView)
+            bringSubviewToFront(thumbnailView)
             thumbnailView.isHidden = false
             propertiesStackView.isHidden = true
             
@@ -47,10 +47,12 @@ extension EVStateProtocol where Self: EVPlayer {
             coverView.notifyPlayerEnded()
             
         case .restart:
-            seek(to: kCMTimeZero, continueFrom: .play)
+            seek(to: .zero, continueFrom: .play)
         
         case .empty:
-            emptyView.isHidden = false
+            let emptyURLView = EVEmptyView()
+            addSubview(emptyURLView)
+            emptyURLView.cuiPinToSuperview()
         }
     }
 }

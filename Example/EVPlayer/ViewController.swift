@@ -36,7 +36,7 @@ class ViewController: UIViewController {
         evPlayer.delegate = self
         evPlayer.center = view.center
         
-        var config = EVConfiguration(media: media,
+        let config = EVConfiguration(media: media,
                                      initialState: .quickPlay)
         evPlayer.load(with: config)
     }
@@ -55,7 +55,7 @@ extension ViewController: EVPlayerDelegate {
     }
     
     func evPlayer(timeChangedTo currentTime: Double, totalTime: Double, loadedRange: Double) {
-        print("loadedRange ->", loadedRange)
+//        print("loadedRange ->", loadedRange)
     }
     
     func evPlayer(fullScreenTransactionUpdateTo state: EVFullScreenState) {

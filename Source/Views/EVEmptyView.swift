@@ -20,6 +20,7 @@ final class EVEmptyView: EVBaseView {
     override func setup() {
         addSubview(emptyImageView)
         super.setup()
+        backgroundColor = .black
     }
     
     override func setConstraints() {
