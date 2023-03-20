@@ -29,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05013C0129C908C700A48AFE /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		054C66B029C48865007810C6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		0E69C5B750995D242EB97C5D /* Pods_EVPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EVPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1072533C1591EE4D8F6CDBF1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
@@ -145,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				8557164F90907F608985E70F /* EVPlayer.podspec */,
+				05013C0129C908C700A48AFE /* Package.swift */,
 				1072533C1591EE4D8F6CDBF1 /* README.md */,
 				EFFF762C7289AD61D99A1BBF /* LICENSE */,
 			);

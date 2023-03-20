@@ -10,8 +10,6 @@ import UIKit
 import EVPlayer
 
 class ViewController: UIViewController {
-
-    @IBOutlet private weak var goButton: UIButton!
     
     var evPlayer: EVPlayer!
     
@@ -21,15 +19,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .black
+        view.backgroundColor = .white
         
         configureEVPlayer()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        evPlayer.changeStateForNavigationChanges(to: .play)
-//    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        evPlayer.changeStateForNavigationChanges(to: .play)
+    }
     
     private func configureEVPlayer() {
         evPlayer = EVPlayer(frame: CGRect(x: 0, y: 0, width: 350, height: 200))
@@ -47,12 +45,6 @@ class ViewController: UIViewController {
 //        config.isFullScreenShouldOpenWithLandscapeMode = true
 //        config.shouldLoopVideo = true
         evPlayer.load(with: config)
-    }
-    
-    @IBAction private func goTapped() {
-        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
-        evPlayer.changeStateForNavigationChanges(to: .pause)
-        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
