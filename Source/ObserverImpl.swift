@@ -46,7 +46,7 @@ extension EVObserverProtocol where Self: EVPlayer {
     }
     
     func setProgressBarValueChangedObserver() {
-        progressBarHighlightedObserver = propertiesStackView.videoSlider.observe(\EVSliderView.isTracking, options: [.old, .new]) { [weak self] (_, change) in
+        progressBarHighlightedObserver = propertiesStackView.videoSlider.observe(\EVProgressSliderView.isTracking, options: [.old, .new]) { [weak self] (_, change) in
             guard let strongSelf = self else { return }
             
             if let duration = strongSelf.player?.currentItem?.duration {

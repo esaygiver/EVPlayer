@@ -39,8 +39,12 @@ class ViewController: UIViewController {
         evPlayer.center = view.center
         
         var config = EVConfiguration(media: media)
+//        config.progressBarMaximumTrackTintColor = .blue
+//        config.progressBarMinimumTrackTintColor = .green
+//        config.forwardSeekDuration = .k30
+//        config.rewindSeekDuration = .k90
         config.shouldAutoPlay = true
-        config.isFullScreenShouldOpenWithLandscapeMode = true
+//        config.isFullScreenShouldOpenWithLandscapeMode = true
 //        config.shouldLoopVideo = true
         evPlayer.load(with: config)
     }
@@ -66,4 +70,3 @@ extension ViewController: EVPlayerDelegate {
         print("stateDidChanged", state)
     }
 }
-

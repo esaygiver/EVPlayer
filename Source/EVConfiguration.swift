@@ -60,6 +60,12 @@ public struct EVConfiguration: EVConfigurationInterface {
     /// Restart video when playback did end, default is false
     public var shouldLoopVideo: Bool = false
     
+    /// Progress bar minimum track tint color, the default is UIColor.orange
+    public var progressBarMinimumTrackTintColor: UIColor = .orange
+    
+    /// Progress bar minimum track tint color, the default is UIColor.lightGray..withAlphaComponent(0.8)
+    public var progressBarMaximumTrackTintColor: UIColor = .lightGray.withAlphaComponent(0.8)
+    
     /// Seek forward player value, the default is 10 sec
     public var forwardSeekDuration: EVSeekDuration = .k10
     

@@ -192,11 +192,13 @@ extension EVPlayer: EVCoverViewDelegate {
         fsConfig.volume = player?.volume
         fsConfig.videoGravity = .resizeAspect
         
-        updateState(to: .pause)
-
+        /// To avoid audio clutter when fullscreen presentation
+        player?.isMuted = true
+        
         EVPlayerController.show(withConfiguration: fsConfig, presentCallback: { [weak self] in
             guard let strongSelf = self else { return }
             
+            strongSelf.updateState(to: .pause)
             strongSelf.delegate?.evPlayer(fullScreenTransactionUpdateTo: .didEnter)
 
 
@@ -221,7 +223,7 @@ extension EVPlayer: EVCoverViewDelegate {
 extension EVPlayer: EVThumbnailViewDelegate {
     
     func start() {
-        updateState(to: .quickPlay)
+        updateState(to: .play)
     }
 }
 

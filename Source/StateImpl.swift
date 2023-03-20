@@ -23,12 +23,12 @@ extension EVStateProtocol where Self: EVPlayer {
         
         switch state {
         case .quickPlay:
-            thumbnailView.makePlayButtonHidden()
             updateState(to: .thumbnail)
-            showProgress()
+            thumbnailView.makePlayButtonHidden()
             updateState(to: .play)
             
         case .play:
+            showProgress()
             coverView.notifyPlayerPlaying()
             player?.play()
             

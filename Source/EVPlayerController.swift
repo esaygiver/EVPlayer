@@ -140,6 +140,9 @@ extension EVPlayerController {
         let dismissConfig = EVConfiguration(state: videoContainerView.videoState,
                                             context: dismissContext)
         
+        /// To avoid audio clutter when dismiss transaction
+        player.isMuted = true
+        
         willDismissCallback?(dismissConfig)
     }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05013BF829C7B41700A48AFE /* EVTransactionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013BF729C7B41700A48AFE /* EVTransactionContext.swift */; };
+		05013BFC29C8AED600A48AFE /* EVProgressSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013BFB29C8AED600A48AFE /* EVProgressSliderView.swift */; };
+		05013BFE29C8AEFB00A48AFE /* EVSoundSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013BFD29C8AEFB00A48AFE /* EVSoundSliderView.swift */; };
 		054C666829C45490007810C6 /* EVPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666729C45490007810C6 /* EVPlayer.swift */; };
 		054C667529C454D0007810C6 /* EVVolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666C29C454D0007810C6 /* EVVolumeView.swift */; };
 		054C667629C454D0007810C6 /* EVBufferingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C666D29C454D0007810C6 /* EVBufferingView.swift */; };
@@ -69,6 +71,8 @@
 /* Begin PBXFileReference section */
 		04783014BB2A06A6E57AAF12885FACB5 /* Pods-EVPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-EVPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		05013BF729C7B41700A48AFE /* EVTransactionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVTransactionContext.swift; sourceTree = "<group>"; };
+		05013BFB29C8AED600A48AFE /* EVProgressSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVProgressSliderView.swift; sourceTree = "<group>"; };
+		05013BFD29C8AEFB00A48AFE /* EVSoundSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVSoundSliderView.swift; sourceTree = "<group>"; };
 		054C666729C45490007810C6 /* EVPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVPlayer.swift; sourceTree = "<group>"; };
 		054C666C29C454D0007810C6 /* EVVolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVVolumeView.swift; sourceTree = "<group>"; };
 		054C666D29C454D0007810C6 /* EVBufferingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVBufferingView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 				054C667229C454D0007810C6 /* EVCoverView.swift */,
 				054C667329C454D0007810C6 /* EVOverlayView.swift */,
 				054C667429C454D0007810C6 /* EVSliderView.swift */,
+				05013BFD29C8AEFB00A48AFE /* EVSoundSliderView.swift */,
+				05013BFB29C8AED600A48AFE /* EVProgressSliderView.swift */,
 				054C668129C454DC007810C6 /* UIImpl.swift */,
 				054C667F29C454DC007810C6 /* StateImpl.swift */,
 				054C668029C454DC007810C6 /* WorkerImpl.swift */,
@@ -482,12 +488,14 @@
 				054C66A929C45614007810C6 /* EVVideoState.swift in Sources */,
 				054C667529C454D0007810C6 /* EVVolumeView.swift in Sources */,
 				054C668B29C454EB007810C6 /* EVMedia.swift in Sources */,
+				05013BFC29C8AED600A48AFE /* EVProgressSliderView.swift in Sources */,
 				054C668629C454DC007810C6 /* UIImpl.swift in Sources */,
 				054C667B29C454D0007810C6 /* EVCoverView.swift in Sources */,
 				054C667C29C454D0007810C6 /* EVOverlayView.swift in Sources */,
 				F8EF824FF54FE2DECCDC0C3C1B9E00BD /* EVPlayer-dummy.m in Sources */,
 				054C66B329C48F6B007810C6 /* NavigationAdapterImpl.swift in Sources */,
 				054C66A129C4552F007810C6 /* EVPlayerController.swift in Sources */,
+				05013BFE29C8AEFB00A48AFE /* EVSoundSliderView.swift in Sources */,
 				054C667829C454D0007810C6 /* EVThumbnailView.swift in Sources */,
 				054C667729C454D0007810C6 /* EVPlayerPropertiesView.swift in Sources */,
 				054C66AE29C46EA1007810C6 /* EVFullScreenState.swift in Sources */,

@@ -24,14 +24,9 @@ extension EVWorkerProtocol where Self: EVPlayer  {
         
         configuration = config
 
-        updateForwardDuration(to: config.forwardSeekDuration)
-        updateRewindDuration(to: config.rewindSeekDuration)
-        
-        thumbnailView.updateThumbnailImage(to: config.media?.thumbnailURL)
-        
         createPlayer(with: url)
-        
-        updateState(to: config.initialState)
+
+        updateInitialUI(with: config)
     }
     
     public func createPlayer(with url: URL) {

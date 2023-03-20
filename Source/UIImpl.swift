@@ -16,6 +16,7 @@ protocol EVUIBufferingImpl {
 protocol EVUIPropertyUpdater {
     func updateForwardDuration(to state: EVSeekDuration)
     func updateRewindDuration(to state: EVSeekDuration)
+    func updateProgressTintColor(with config: EVConfiguration)
 }
 
 protocol EVUIConfigApplier {
@@ -34,6 +35,7 @@ typealias EVUIProtocolType = EVUIBufferingImpl & EVUIPropertyUpdater & EVUIConfi
 
 protocol EVUIProtocol: EVUIProtocolType {
     func setupUI()
+    func updateInitialUI(with config: EVConfiguration)
     func updateUI(with progressTime: CMTime?)
 }
 
@@ -83,7 +85,7 @@ extension EVUIProtocol where Self: EVPlayer {
         if videoState == .play || videoState == .quickPlay {
             thumbnailView.isHidden = true
             propertiesStackView.isHidden = false
-            hideProgress()
+//            hideProgress()
         }
         
         guard let duration = player?.currentItem?.duration,
@@ -93,7 +95,12 @@ extension EVUIProtocol where Self: EVPlayer {
         
         let progressValue = (progressTime.seconds / duration.seconds) * 100
         
-        propertiesStackView.updateDuration(current: progressTime <= duration ? progressTime : duration, total: duration)
+        if progressTime <= duration {
+            propertiesStackView.updateDuration(current: progressTime, total: duration)
+        } else {
+            propertiesStackView.updateDuration(current: duration, total: duration)
+            updateState(to: .ended)
+        }
 
         if let progressValueWithOneCharAfterComma = Double(String(format: "%.1f", progressValue)) {
             delegate?.evPlayer(timeChangedTo: progressTime.seconds,
@@ -154,6 +161,11 @@ extension EVUIProtocol where Self: EVPlayer {
         coverView.updateForwardDuration(to: state)
     }
     
+    func updateProgressTintColor(with config: EVConfiguration) {
+        propertiesStackView.videoSlider._minimumTrackTintColor = config.progressBarMinimumTrackTintColor
+        propertiesStackView.videoSlider._maximumTrackTintColor = config.progressBarMaximumTrackTintColor
+    }
+    
     func showProgress() {
         DispatchQueue.main.async {
             self.coverView.changePlayButtonImageForBufferState()
@@ -179,5 +191,15 @@ extension EVUIProtocol where Self: EVPlayer {
         videoLayer.addGestureRecognizer(doubleTapGR)
         
         singleTapGR.require(toFail: doubleTapGR)
+    }
+    
+    func updateInitialUI(with config: EVConfiguration) {
+        thumbnailView.updateThumbnailImage(to: config.media?.thumbnailURL)
+
+        updateForwardDuration(to: config.forwardSeekDuration)
+        updateRewindDuration(to: config.rewindSeekDuration)
+        updateProgressTintColor(with: config)
+        
+        updateState(to: config.initialState)
     }
 }

@@ -10,7 +10,7 @@ import AVKit
 
 public class EVPlayerPropertiesView: UIStackView {
     
-    lazy var videoSlider = EVSliderView(sliderType: .progress)
+    lazy var videoSlider = EVProgressSliderView()
     private let currentVideoDurationLabel = UILabel()
     private let totalVideoDurationLabel = UILabel()
 

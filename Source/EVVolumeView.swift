@@ -13,7 +13,7 @@ protocol EVVolumeViewDelegate: AnyObject {
 
 final class EVVolumeView: EVBaseView {
     
-    private lazy var soundSlider = EVSliderView(sliderType: .sound)
+    private lazy var soundSlider = EVSoundSliderView()
     private lazy var soundButton = UIButton(type: .custom)
     
     weak var delegate: EVVolumeViewDelegate?
@@ -72,9 +72,9 @@ final class EVVolumeView: EVBaseView {
     }
 }
 
-// MARK: - Implementation of EVSliderViewDelegate
+// MARK: - Implementation of EVSoundSliderViewDelegate
 
-extension EVVolumeView: EVSliderViewDelegate {
+extension EVVolumeView: EVSoundSliderViewDelegate {
 
     func changedValue(_ val: Float) {
         soundSlider.value = val
