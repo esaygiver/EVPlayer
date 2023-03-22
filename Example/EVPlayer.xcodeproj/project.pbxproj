@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		054C66B129C48865007810C6 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054C66B029C48865007810C6 /* DetailViewController.swift */; };
+		05013C9429CA42DC00A48AFE /* defaultThumbnail.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05013C9329CA42DC00A48AFE /* defaultThumbnail.jpeg */; };
+		05013C9629CA4A7900A48AFE /* defaultThumbnail2.png in Resources */ = {isa = PBXBuildFile; fileRef = 05013C9529CA4A7800A48AFE /* defaultThumbnail2.png */; };
 		4023CDD121E26305A4A2D428 /* Pods_EVPlayer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E69C5B750995D242EB97C5D /* Pods_EVPlayer_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -29,8 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		05013C0129C908C700A48AFE /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		054C66B029C48865007810C6 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		05013C9329CA42DC00A48AFE /* defaultThumbnail.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultThumbnail.jpeg; sourceTree = "<group>"; };
+		05013C9529CA4A7800A48AFE /* defaultThumbnail2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultThumbnail2.png; sourceTree = "<group>"; };
 		0E69C5B750995D242EB97C5D /* Pods_EVPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EVPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1072533C1591EE4D8F6CDBF1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1C435D38827410900FDC7ABA /* Pods-EVPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVPlayer_Tests.release.xcconfig"; path = "Target Support Files/Pods-EVPlayer_Tests/Pods-EVPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,10 +108,11 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				054C66B029C48865007810C6 /* DetailViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				05013C9329CA42DC00A48AFE /* defaultThumbnail.jpeg */,
+				05013C9529CA4A7800A48AFE /* defaultThumbnail2.png */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
 			);
 			name = "Example for EVPlayer";
@@ -146,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				8557164F90907F608985E70F /* EVPlayer.podspec */,
-				05013C0129C908C700A48AFE /* Package.swift */,
 				1072533C1591EE4D8F6CDBF1 /* README.md */,
 				EFFF762C7289AD61D99A1BBF /* LICENSE */,
 			);
@@ -254,6 +255,8 @@
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
+				05013C9629CA4A7900A48AFE /* defaultThumbnail2.png in Resources */,
+				05013C9429CA42DC00A48AFE /* defaultThumbnail.jpeg in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +340,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				054C66B129C48865007810C6 /* DetailViewController.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

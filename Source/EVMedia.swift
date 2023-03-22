@@ -8,17 +8,17 @@
 import Foundation
 
 public protocol EVMediaInterface {
-    var mediaURL: URL? { get }
+    var videoURL: URL { get }
     var thumbnailURL: URL? { get }
-    init(mediaURL: URL?, thumbnailURL: URL?)
+    init(videoURL: URL, thumbnailURL: URL?)
 }
 
 public struct EVMedia: EVMediaInterface {
-    public let mediaURL: URL?
+    public let videoURL: URL
     public let thumbnailURL: URL?
     
-    public init(mediaURL: URL?, thumbnailURL: URL? = nil) {
-        self.mediaURL = mediaURL
+    public init(videoURL: URL, thumbnailURL: URL? = nil) {
+        self.videoURL = videoURL
         self.thumbnailURL = thumbnailURL
     }
 }

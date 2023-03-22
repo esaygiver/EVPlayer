@@ -190,17 +190,16 @@ extension EVPlayer: EVCoverViewDelegate {
         fsConfig.seekTime = player?.currentTime()
         fsConfig.isMuted = player?.isMuted
         fsConfig.volume = player?.volume
-        fsConfig.videoGravity = .resizeAspect
+        fsConfig.videoGravity = config.fullScreenModeVideoGravity
         
         /// To avoid audio clutter when fullscreen presentation
         player?.isMuted = true
         
-        EVPlayerController.show(withConfiguration: fsConfig, presentCallback: { [weak self] in
+        EVPlayerController.startFullScreenMode(withConfiguration: fsConfig, presentCallback: { [weak self] in
             guard let strongSelf = self else { return }
             
             strongSelf.updateState(to: .pause)
             strongSelf.delegate?.evPlayer(fullScreenTransactionUpdateTo: .didEnter)
-
 
         }, willDismissCallback: { [weak self] config in
             guard let strongSelf = self else { return }

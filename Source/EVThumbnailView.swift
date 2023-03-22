@@ -63,7 +63,8 @@ public class EVThumbnailView: EVBaseView {
         centeredButton.isHidden = true
     }
     
-    func updateThumbnailImage(to url: URL?) {
+    func updateThumbnailImage(to url: URL?, contentMode: UIView.ContentMode = .scaleToFill) {
+        imageView.contentMode = contentMode
         downloadThumbnailImage(from: url)
     }
     
@@ -93,12 +94,13 @@ public class EVThumbnailView: EVBaseView {
     
     @objc
     private func thumbnailButtonEvent() {
-        UIView.animate(withDuration: 0.25, animations: {
-            self.centeredButton.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: {
+            self.centeredButton.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+            
         }) { _ in
             self.delegate?.start()
             self.centeredButton.isHidden = true
-            self.centeredButton.alpha = 1.0
+            self.centeredButton.transform = CGAffineTransform.identity
         }
     }
 }

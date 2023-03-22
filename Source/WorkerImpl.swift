@@ -15,16 +15,14 @@ public protocol EVWorkerProtocol {
 extension EVWorkerProtocol where Self: EVPlayer  {
     
     public func load(with config: EVConfiguration) {
-        guard let media = config.media,
-              let url = media.mediaURL else {
-            updateState(to: .empty)
-            EVDefaultLogger.logger.error("\(#function), media url is nil, check out configuration file")
+        guard let media = config.media else {
+            EVDefaultLogger.logger.error("\(#function), media is nil")
             return
         }
         
         configuration = config
 
-        createPlayer(with: url)
+        createPlayer(with: media.videoURL)
 
         updateInitialUI(with: config)
     }

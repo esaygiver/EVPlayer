@@ -25,7 +25,4 @@ public enum EVVideoState {
     case ended
     
     case restart
-    
-    /// Empty view will top if url is empty
-    case empty
 }

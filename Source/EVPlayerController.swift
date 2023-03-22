@@ -10,8 +10,8 @@ import AVKit
 
 public class EVPlayerController: UIViewController {
     
-    typealias EVDefaultCallback = () -> Void
-    typealias EVConfigCallback = (EVConfiguration) -> Void
+    public typealias EVDefaultCallback = () -> Void
+    public typealias EVConfigCallback = (EVConfiguration) -> Void
 
     private(set) var videoContainerView: EVFullScreenView!
     private(set) var configuration: EVConfiguration?
@@ -92,7 +92,7 @@ public class EVPlayerController: UIViewController {
     /// - Parameters:
     ///   - configuration: Customizable EVConfiguration
     ///   - presentCallback: After presentation callback
-    class func show(
+    public class func startFullScreenMode(
         withConfiguration config: EVConfiguration,
         presentCallback: EVDefaultCallback? = nil,
         willDismissCallback: EVConfigCallback? = nil,

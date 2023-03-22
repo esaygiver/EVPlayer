@@ -13,17 +13,20 @@ public protocol EVConfigurationInterface {
     var initialState: EVVideoState? { get }
     var context: EVTransactionContextInterface? { get }
     
+    var isFullScreenModeSupported: Bool { get }
     var shouldAutoPlay: Bool { get }
     var shouldLoopVideo: Bool { get }
     var forwardSeekDuration: EVSeekDuration { get }
     var rewindSeekDuration: EVSeekDuration { get }
     var videoGravity: AVLayerVideoGravity { get }
+    var fullScreenModeVideoGravity: AVLayerVideoGravity { get }
     var isFullScreenShouldAutoRotate: Bool { get }
     var fullScreenSupportedInterfaceOrientations: UIInterfaceOrientationMask { get }
     var isFullScreenShouldOpenWithLandscapeMode: Bool { get }
     var fullScreenPresentationStyle: UIModalPresentationStyle { get }
     var isSeekAnimationsEnabled: Bool { get }
     var isTransactionAnimated: Bool { get }
+    var thumbnailContentMode: UIView.ContentMode { get}
     var assetCacher: EVPlayerCacheability { get }
 }
 
@@ -50,12 +53,15 @@ public struct EVConfiguration: EVConfigurationInterface {
         self.volume = context?.volume
     }
     
-    /// Set auto play status, default is true
+    /// Set auto play status, default is false
     public var shouldAutoPlay: Bool = false {
         didSet {
             initialState = .quickPlay
         }
     }
+
+    /// Add full-screen feature to layer, default is true
+    public var isFullScreenModeSupported: Bool = true
     
     /// Restart video when playback did end, default is false
     public var shouldLoopVideo: Bool = false
@@ -74,6 +80,12 @@ public struct EVConfiguration: EVConfigurationInterface {
 
     /// The default value is AVLayerVideoGravity.resize
     public var videoGravity: AVLayerVideoGravity = .resize
+    
+    /// The default value is AVLayerVideoGravity.resizeAspect
+    public var fullScreenModeVideoGravity: AVLayerVideoGravity = .resizeAspect
+    
+    /// The default value is UIView.ContentMode.scaleToFill
+    public var thumbnailContentMode: UIView.ContentMode = .scaleToFill
     
     /// The default value is true
     public var isFullScreenShouldAutoRotate: Bool = true

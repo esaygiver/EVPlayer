@@ -56,13 +56,13 @@ final class EVSoundSliderView: EVSliderView {
     }
     
     func changeSliderUI(value: Float) {
-        if value != 0.0 {
+        if value >= 0.9 {
             setThumbImage(makeSliderImage(size: CGSize(width: 4, height: 4)), for: .normal)
             setThumbImage(makeSliderImage(size: CGSize(width: 4, height: 4)), for: .highlighted)
-
-        } else {
-            setThumbImage(UIImage(), for: .normal)
-            setThumbImage(UIImage(), for: .highlighted)
+            return
         }
+        setThumbImage(UIImage(), for: .normal)
+        setThumbImage(UIImage(), for: .highlighted)
+
     }
 }

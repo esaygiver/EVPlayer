@@ -116,7 +116,7 @@ public class EVCoverView: EVBaseView {
         
         volumeView.cuiPinTrailingToSuperView(constant: -6)
         volumeView.cuiPinTopToSuperView(constant: 6)
-        volumeView.widthAnchor.cuiSet(to: 70)
+        volumeView.widthAnchor.cuiSet(to: 85)
         volumeView.heightAnchor.cuiSet(to: 20)
         
         fullScreenButton.widthAnchor.cuiSet(to: 20)

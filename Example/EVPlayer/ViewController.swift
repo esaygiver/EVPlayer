@@ -10,41 +10,77 @@ import UIKit
 import EVPlayer
 
 class ViewController: UIViewController {
+        
+    private(set) var evPlayer: EVPlayer!
+    private var showEVPlayerControllerButton: UIButton!
     
-    var evPlayer: EVPlayer!
-    
-    let media = EVMedia(mediaURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"),
-                        thumbnailURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg"))
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        
         configureEVPlayer()
+//        configureFullScreenButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        evPlayer.changeStateForNavigationChanges(to: .play)
+//        evPlayer.changeStateForNavigationChanges(to: .play)
+    }
+    
+    private func configureFullScreenButton() {
+        showEVPlayerControllerButton = UIButton()
+        showEVPlayerControllerButton.setTitle("Open Full-Screen Mode", for: .normal)
+        showEVPlayerControllerButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        showEVPlayerControllerButton.setTitleColor(.orange, for: .normal)
+        showEVPlayerControllerButton.backgroundColor = .lightGray.withAlphaComponent(0.2)
+        showEVPlayerControllerButton.layer.cornerRadius = 12.0
+        showEVPlayerControllerButton.addTarget(self, action: #selector(showEVPlayerControllerButtonTapped), for: .touchUpInside)
+        showEVPlayerControllerButton.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(showEVPlayerControllerButton)
+        
+        NSLayoutConstraint.activate([
+            showEVPlayerControllerButton.widthAnchor.constraint(equalToConstant: 200),
+            showEVPlayerControllerButton.heightAnchor.constraint(equalToConstant: 50),
+            showEVPlayerControllerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            showEVPlayerControllerButton.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0)
+         ])
     }
     
     private func configureEVPlayer() {
-        evPlayer = EVPlayer(frame: CGRect(x: 0, y: 0, width: 350, height: 200))
+        evPlayer = EVPlayer(frame: CGRect(x: 0, y: 0, width: 400, height: 225))
 
         view.addSubview(evPlayer)
         evPlayer.delegate = self
         evPlayer.center = view.center
         
+        let media = EVMedia(videoURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4")!,
+                            thumbnailURL: URL(fileURLWithPath: Bundle.main.path(forResource: "defaultThumbnail2", ofType: "png") ?? ""))
+        
         var config = EVConfiguration(media: media)
-//        config.progressBarMaximumTrackTintColor = .blue
+        
+//        config.isFullScreenModeSupported = false
 //        config.progressBarMinimumTrackTintColor = .green
-//        config.forwardSeekDuration = .k30
-//        config.rewindSeekDuration = .k90
-        config.shouldAutoPlay = true
+//        config.forwardSeekDuration = .k15
+//        config.rewindSeekDuration = .k45
+//        config.shouldAutoPlay = true
+//        config.fullScreenModeVideoGravity = .resize
 //        config.isFullScreenShouldOpenWithLandscapeMode = true
 //        config.shouldLoopVideo = true
+//        config.videoGravity = .resizeAspect
+        
         evPlayer.load(with: config)
+    }
+    
+    @objc private func showEVPlayerControllerButtonTapped() {
+        let media = EVMedia(videoURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")!,
+                            thumbnailURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg"))
+        
+        var config = EVConfiguration(media: media)
+        config.thumbnailContentMode = .scaleAspectFit
+        config.videoGravity = .resizeAspect
+        
+        EVPlayerController.startFullScreenMode(withConfiguration: config)
     }
 }
 

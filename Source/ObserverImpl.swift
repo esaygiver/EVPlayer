@@ -39,7 +39,9 @@ extension EVObserverProtocol where Self: EVPlayer {
                     strongSelf.hideProgress()
                     strongSelf.updateUI(with: progressTime)
                 } else {
-                    strongSelf.showProgress()
+                    if strongSelf.videoState != .pause {
+                        strongSelf.showProgress()
+                    }
                 }
             }
         })

@@ -72,9 +72,6 @@ extension EVUIProtocol where Self: EVPlayer {
         bufferingView.heightAnchor.cuiSet(to: 40)
         bufferingView.widthAnchor.cuiSet(to: 40)
         
-        // emptyView
-
-        
         // Tap Gesture Recognizers
 
         setGestureRecognizers()
@@ -82,25 +79,24 @@ extension EVUIProtocol where Self: EVPlayer {
     
     func updateUI(with progressTime: CMTime?) {
         
-        if videoState == .play || videoState == .quickPlay {
+        if videoState == .play {
             thumbnailView.isHidden = true
             propertiesStackView.isHidden = false
-//            hideProgress()
         }
         
         guard let duration = player?.currentItem?.duration,
               let progressTime = progressTime else {
             return
         }
-        
-        let progressValue = (progressTime.seconds / duration.seconds) * 100
-        
+                
         if progressTime <= duration {
             propertiesStackView.updateDuration(current: progressTime, total: duration)
         } else {
             propertiesStackView.updateDuration(current: duration, total: duration)
             updateState(to: .ended)
         }
+
+        let progressValue = (progressTime.seconds / duration.seconds) * 100
 
         if let progressValueWithOneCharAfterComma = Double(String(format: "%.1f", progressValue)) {
             delegate?.evPlayer(timeChangedTo: progressTime.seconds,
@@ -194,11 +190,13 @@ extension EVUIProtocol where Self: EVPlayer {
     }
     
     func updateInitialUI(with config: EVConfiguration) {
-        thumbnailView.updateThumbnailImage(to: config.media?.thumbnailURL)
+        thumbnailView.updateThumbnailImage(to: config.media?.thumbnailURL, contentMode: config.thumbnailContentMode)
 
         updateForwardDuration(to: config.forwardSeekDuration)
         updateRewindDuration(to: config.rewindSeekDuration)
         updateProgressTintColor(with: config)
+        
+        if !config.isFullScreenModeSupported { coverView.hideFullScreenButton() }
         
         updateState(to: config.initialState)
     }

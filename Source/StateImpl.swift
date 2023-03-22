@@ -48,11 +48,6 @@ extension EVStateProtocol where Self: EVPlayer {
             
         case .restart:
             seek(to: .zero, continueFrom: .play)
-        
-        case .empty:
-            let emptyURLView = EVEmptyView()
-            addSubview(emptyURLView)
-            emptyURLView.cuiPinToSuperview()
         }
     }
 }
