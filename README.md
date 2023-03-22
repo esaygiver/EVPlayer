@@ -95,7 +95,7 @@ evPlayer.load(with: config)
 ```
 > EVPlayer screen recordings (Portrait & Landscape full screen mode, ended scene)
 
-![EVPLayer-SR2](https://user-images.githubusercontent.com/73871735/226729453-e167f6af-5b20-4fb4-887b-d4f1b7a8b5ed.gif) **** ![EVPlayer-SR3](https://user-images.githubusercontent.com/73871735/226735395-3f4e336a-4ddc-4a66-8da5-769504061e66.gif) **** ![EVPlayer-SR4](https://user-images.githubusercontent.com/73871735/226738241-2a49d80e-6f82-48d9-8ad0-400f0c7ad8fd.gif)
+![EVPLayer-SR2](https://user-images.githubusercontent.com/73871735/226729453-e167f6af-5b20-4fb4-887b-d4f1b7a8b5ed.gif) * ![EVPlayer-SR3](https://user-images.githubusercontent.com/73871735/226735395-3f4e336a-4ddc-4a66-8da5-769504061e66.gif) * ![EVPlayer-SR4](https://user-images.githubusercontent.com/73871735/226738241-2a49d80e-6f82-48d9-8ad0-400f0c7ad8fd.gif)
 
 **EVPlayerController Usage**
 ```swift
