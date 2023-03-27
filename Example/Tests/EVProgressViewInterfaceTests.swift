@@ -30,6 +30,22 @@ final class EVProgressViewInterfaceTests: XCTestCase {
         super.tearDown()
     }
     
+    func testVisibleState() {
+        // When
+        evPlayer.makePlayerPropertiesVisible()
+        
+        // Then
+        XCTAssertTrue((sut as! MockEVProgressView).isVisible)
+    }
+    
+    func testVisibilityStateToHide() {
+        // When
+        evPlayer.hideCover()
+        
+        // Then
+        XCTAssertFalse((sut as! MockEVProgressView).isVisible)
+    }
+    
     func testChangeMinimumTrackTintColor() {
         // Given
         mockConfig.progressBarMinimumTrackTintColor = .black

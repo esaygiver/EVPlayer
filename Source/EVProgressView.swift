@@ -9,10 +9,11 @@ import UIKit
 import AVKit
 
 public protocol EVProgressViewInterface {
-    var isHidden: Bool { get set }
     var minimumTrackTintColor: UIColor? { get set }
     var maximumTrackTintColor: UIColor? { get set }
     func updateDuration(current: CMTime, total: CMTime)
+    func makeVisibleWithAnimation()
+    func hideWithAnimation()
 }
 
 public typealias EVProgressViewType = UIStackView & EVProgressViewInterface
@@ -69,6 +70,30 @@ public class EVProgressView: EVProgressViewType {
         addArrangedSubview(currentVideoDurationLabel)
         addArrangedSubview(videoSlider)
         addArrangedSubview(totalVideoDurationLabel)
+    }
+    
+    public func makeVisibleWithAnimation() {
+        guard isHidden else {
+            return
+        }
+        
+        let cachedOriginY = frame.origin.y
+        frame.origin.y = cachedOriginY + 5
+        
+        UIView.animate(withDuration: 0.15, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.frame.origin.y = cachedOriginY
+        })
+        
+        isHidden = false
+    }
+    
+    public func hideWithAnimation() {
+        UIView.animate(withDuration: 0.35, animations: {
+            self.alpha = 0.0
+        }) { _ in
+            self.isHidden = true
+            self.alpha = 1.0
+        }
     }
     
     public func updateDuration(current: CMTime, total: CMTime) {

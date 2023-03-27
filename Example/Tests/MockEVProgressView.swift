@@ -11,12 +11,20 @@ import EVPlayer
 
 final class MockEVProgressView: EVProgressViewType {
     
-    var minimumTrackTintColor: UIColor? = nil
-    
-    var maximumTrackTintColor: UIColor? = nil
-    
+    var isVisible = false
     var isDurationUpdated = false
     var currentDuration: CMTime? = nil
+    var minimumTrackTintColor: UIColor? = nil
+    var maximumTrackTintColor: UIColor? = nil
+
+    func makeVisibleWithAnimation() {
+        isVisible = true
+    }
+    
+    func hideWithAnimation() {
+        isVisible = false
+    }
+    
     func updateDuration(current: CMTime, total: CMTime) {
         isDurationUpdated = true
         currentDuration = current

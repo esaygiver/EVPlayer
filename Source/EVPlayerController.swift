@@ -14,11 +14,11 @@ public class EVPlayerController: UIViewController {
     public typealias EVConfigCallback = (EVConfiguration) -> Void
 
     private(set) var evFullScreenPlayer: EVFullScreenPlayer!
-    private(set) var configuration: EVConfiguration?
+    private var configuration: EVConfiguration?
     private let dismissButton = UIButton(type: .custom)
-    
+
     private lazy var panGR = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerHandler))
-    private var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
+    private var initialTouchPoint = CGPoint(x: 0, y: 0)
     
     private var willDismissCallback: EVConfigCallback?
     private var didDismissCallback: EVDefaultCallback?
@@ -29,7 +29,7 @@ public class EVPlayerController: UIViewController {
         }
         return configuration.isFullScreenShouldOpenWithLandscapeMode ? .landscape : configuration.fullScreenSupportedInterfaceOrientations
     }
-
+    
     public override var shouldAutorotate: Bool {
         guard let configuration = configuration else {
             return false
@@ -56,14 +56,30 @@ public class EVPlayerController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        view.addGestureRecognizer(panGR)
-        view.backgroundColor = .black
-        configureVideoView()
+        configureUI()
+        configureFullScreenPlayer()
         configureDismissButton()
-        
     }
     
-    private func configureVideoView() {
+    public override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        evFullScreenPlayer.cuiPinLeadingToSuperView()
+        evFullScreenPlayer.cuiPinTrailingToSuperView()
+        evFullScreenPlayer.cuiPinTopToSuperView(constant: 30)
+        evFullScreenPlayer.cuiPinBottomToSuperView(constant: -30)
+        
+        dismissButton.widthAnchor.cuiSet(to: 20)
+        dismissButton.heightAnchor.cuiSet(to: 20)
+        dismissButton.cuiPinTopToSuperView(constant: 6)
+        dismissButton.cuiPinLeadingToSuperView(constant: 12)
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = .black
+        view.addGestureRecognizer(panGR)
+    }
+    
+    private func configureFullScreenPlayer() {
         guard let config = configuration else {
             return
         }
@@ -71,11 +87,6 @@ public class EVPlayerController: UIViewController {
         evFullScreenPlayer.reload(with: config)
         
         view.addSubview(evFullScreenPlayer)
-        
-        evFullScreenPlayer.cuiPinLeadingToSuperView()
-        evFullScreenPlayer.cuiPinTrailingToSuperView()
-        evFullScreenPlayer.cuiPinTopToSuperView(constant: 30)
-        evFullScreenPlayer.cuiPinBottomToSuperView(constant: -30)
     }
     
     private func configureDismissButton() {
@@ -86,12 +97,12 @@ public class EVPlayerController: UIViewController {
         dismissButton.imageView?.contentMode = .scaleAspectFit
         dismissButton.contentVerticalAlignment = .fill
         dismissButton.contentHorizontalAlignment = .fill
-        
-        dismissButton.widthAnchor.cuiSet(to: 20)
-        dismissButton.heightAnchor.cuiSet(to: 20)
-        dismissButton.cuiPinTopToSuperView(constant: 6)
-        dismissButton.cuiPinLeadingToSuperView(constant: 12)
     }
+}
+
+// MARK: - StartFullScrenMode
+
+extension EVPlayerController {
     
     /// Presents EVPlayerController with EVConfiguration
     /// - Parameters:
@@ -118,20 +129,16 @@ public class EVPlayerController: UIViewController {
                            animated: config.isTransactionAnimated,
                            completion: presentCallback)
         }
-    
-    @objc
-    private func dismissScene() {
-        willDismissWithConfig()
-    
-        dismiss(animated: true) { [weak self] in
-            self?.didDismissCallback?()
-        }
-    }
+}
+
+// MARK: - PanGestureRecognizer
+
+extension EVPlayerController {
     
     @objc
     private func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
         let touchPoint = sender.location(in: view?.window)
-
+        
         switch sender.state {
         case .began:
             initialTouchPoint = touchPoint
@@ -149,11 +156,11 @@ public class EVPlayerController: UIViewController {
                 dismissScene()
                 
             } else {
-                UIView.animate(withDuration: 0.15, animations: {
+                UIView.animate(withDuration: 0.2) {
                     self.view.frame = CGRect(x: 0, y: 0,
                                              width: self.view.frame.size.width,
                                              height: self.view.frame.size.height)
-                })
+                }
             }
             
         default:
@@ -162,15 +169,24 @@ public class EVPlayerController: UIViewController {
     }
 }
 
-// MARK: - Publish Config
+// MARK: - Dismiss & Publish Config
 
 extension EVPlayerController {
+    
+    @objc
+    private func dismissScene() {
+        willDismissWithConfig()
+        
+        dismiss(animated: true) { [weak self] in
+            self?.didDismissCallback?()
+        }
+    }
     
     private func willDismissWithConfig() {
         guard let player = evFullScreenPlayer.player else {
             return
         }
-                
+        
         let dismissContext = EVTransactionContext(seekTime: player.currentTime(),
                                                   isMuted: player.isMuted,
                                                   volume: player.volume)

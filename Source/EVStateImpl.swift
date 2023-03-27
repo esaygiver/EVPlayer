@@ -41,7 +41,6 @@ extension EVStateProtocol where Self: EVPlayer {
             updateState(to: .pause)
             bringSubviewToFront(thumbnailInterface as! UIView)
             thumbnailInterface.isVisible = true
-            progressInterface.isHidden = true
             
         case .ended:
             coverInterface.notifyPlayerEnded()

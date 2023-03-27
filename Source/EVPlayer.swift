@@ -25,7 +25,7 @@ public class EVPlayer: UIView {
     var bufferingInterface: EVBufferingViewInterface!
     
     // Tap Gestures
-    lazy var singleTapGR = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
+    lazy var singleTapGR = UITapGestureRecognizer(target: self, action: #selector(makePlayerPropertiesVisible))
     lazy var doubleTapGR = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
     
     // MARK: - Logic
@@ -223,6 +223,10 @@ extension EVPlayer: EVCoverViewDelegate {
 
             strongSelf.delegate?.evPlayer(fullScreenTransactionUpdateTo: .didDismiss)
         })
+    }
+    
+    public func hideCover() {
+        progressInterface.hideWithAnimation()
     }
 }
 

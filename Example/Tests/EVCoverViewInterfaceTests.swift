@@ -156,7 +156,7 @@ final class EVCoverViewInterfaceTests: XCTestCase {
     
     func test_toggleCoverVisibilityWhenSingleTapGestureTapped() {
         // When
-        evPlayer.handleSingleTap()
+        evPlayer.makePlayerPropertiesVisible()
         
         // Then
         XCTAssertTrue((self.sut as! MockEVCoverView).isVisibilityToggled)

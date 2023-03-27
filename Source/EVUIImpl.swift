@@ -52,9 +52,8 @@ extension EVUIProtocol where Self: EVPlayer {
     
     public func updateUI(with progressTime: CMTime?) {
         
-        if videoState == .play {
+        if videoState == .play && thumbnailInterface.isVisible {
             thumbnailInterface.isVisible = false
-            progressInterface.isHidden = false
         }
         
         guard let duration = player?.currentItem?.duration,
@@ -221,8 +220,9 @@ extension EVPlayer {
     // Gesture Handlers
     
     @objc
-    public func handleSingleTap() {
+    public func makePlayerPropertiesVisible() {
         coverInterface.toggleVisibility()
+        progressInterface.makeVisibleWithAnimation()
     }
     
     @objc
@@ -236,7 +236,7 @@ extension EVPlayer {
                 coverInterface.forwardEvent()
                 
             } else {
-                handleSingleTap()
+                makePlayerPropertiesVisible()
             }
         }
     }

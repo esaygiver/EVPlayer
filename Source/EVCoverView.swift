@@ -15,6 +15,7 @@ protocol EVCoverViewDelegate: AnyObject {
     func volume(_ val: Float)
     func fullScreen()
     func restart()
+    func hideCover()
 }
 
 public protocol EVCoverViewInterface {
@@ -273,6 +274,7 @@ extension EVCoverView {
     }
     
     public func hide() {
+        delegate?.hideCover()
         UIView.animate(withDuration: 0.35, animations: {
             self.alpha = 0.0
         }) { _ in

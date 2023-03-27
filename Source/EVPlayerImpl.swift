@@ -29,6 +29,7 @@ extension EVPlayerProtocol where Self: EVPlayer {
         }
         player = AVPlayer(playerItem: playerItem)
         player?.automaticallyWaitsToMinimizeStalling = true
+        player?.isMuted = true
     }
     
     func setPlayerLayer() {
