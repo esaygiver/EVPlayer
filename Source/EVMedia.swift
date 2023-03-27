@@ -7,13 +7,7 @@
 
 import Foundation
 
-public protocol EVMediaInterface {
-    var videoURL: URL { get }
-    var thumbnailURL: URL? { get }
-    init(videoURL: URL, thumbnailURL: URL?)
-}
-
-public struct EVMedia: EVMediaInterface {
+public struct EVMedia {
     public let videoURL: URL
     public let thumbnailURL: URL?
     

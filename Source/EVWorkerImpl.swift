@@ -1,5 +1,5 @@
 //
-//  WorkerImpl.swift
+//  EVWorkerImpl.swift
 //  EVPlayer
 //
 //  Created by Emirhan Saygiver on 12.03.2023.
@@ -15,14 +15,9 @@ public protocol EVWorkerProtocol {
 extension EVWorkerProtocol where Self: EVPlayer  {
     
     public func load(with config: EVConfiguration) {
-        guard let media = config.media else {
-            EVDefaultLogger.logger.error("\(#function), media is nil")
-            return
-        }
-        
         configuration = config
 
-        createPlayer(with: media.videoURL)
+        createPlayer(with: config.media.videoURL)
 
         updateInitialUI(with: config)
     }

@@ -11,8 +11,16 @@ protocol EVThumbnailViewDelegate: AnyObject {
     func start()
 }
 
-public class EVThumbnailView: EVBaseView {
-        
+public protocol EVThumbnailViewInterface {
+    var isVisible: Bool { get set }
+    func makePlayButtonHidden()
+    func updateThumbnailImage(to url: URL?, contentMode: UIView.ContentMode)
+}
+
+public typealias EVThumbnailViewType = EVBaseView & EVThumbnailViewInterface
+
+public class EVThumbnailView: EVThumbnailViewType {
+            
     // MARK: - UI Properties
     
     private let imageView: UIImageView = {
@@ -39,6 +47,12 @@ public class EVThumbnailView: EVBaseView {
         return button
     }()
     
+    public var isVisible: Bool = true {
+        didSet {
+            isHidden = !isVisible
+        }
+    }
+    
     weak var delegate: EVThumbnailViewDelegate?
     
     override func setup() {
@@ -59,11 +73,11 @@ public class EVThumbnailView: EVBaseView {
         alphaView.cuiPinToSuperview()
     }
     
-    func makePlayButtonHidden() {
+    public func makePlayButtonHidden() {
         centeredButton.isHidden = true
     }
     
-    func updateThumbnailImage(to url: URL?, contentMode: UIView.ContentMode = .scaleToFill) {
+    public func updateThumbnailImage(to url: URL?, contentMode: UIView.ContentMode = .scaleToFill) {
         imageView.contentMode = contentMode
         downloadThumbnailImage(from: url)
     }

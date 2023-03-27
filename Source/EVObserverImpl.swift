@@ -1,5 +1,5 @@
 //
-//  ObserverImpl.swift
+//  EVObserverImpl.swift
 //  EVPlayer
 //
 //  Created by Emirhan Saygiver on 12.03.2023.
@@ -48,12 +48,15 @@ extension EVObserverProtocol where Self: EVPlayer {
     }
     
     func setProgressBarValueChangedObserver() {
-        progressBarHighlightedObserver = propertiesStackView.videoSlider.observe(\EVProgressSliderView.isTracking, options: [.old, .new]) { [weak self] (_, change) in
+        guard let progressView = progressInterface as? EVProgressView else {
+            return
+        }
+        progressBarHighlightedObserver = progressView.videoSlider.observe(\EVProgressSliderView.isTracking, options: [.old, .new]) { [weak self] (_, change) in
             guard let strongSelf = self else { return }
             
             if let duration = strongSelf.player?.currentItem?.duration {
                 let totalSeconds: Float64 = CMTimeGetSeconds(duration)
-                let value = Float64(strongSelf.propertiesStackView.videoSlider.value) * totalSeconds
+                let value = Float64(progressView.videoSlider.value) * totalSeconds
                 let seekTime = CMTime(value: Int64(value), timescale: 1)
                                 
                 if let isValueStartedToChanging = change.newValue, isValueStartedToChanging {

@@ -9,13 +9,23 @@
 /* Begin PBXBuildFile section */
 		05013C9429CA42DC00A48AFE /* defaultThumbnail.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 05013C9329CA42DC00A48AFE /* defaultThumbnail.jpeg */; };
 		05013C9629CA4A7900A48AFE /* defaultThumbnail2.png in Resources */ = {isa = PBXBuildFile; fileRef = 05013C9529CA4A7800A48AFE /* defaultThumbnail2.png */; };
+		05013CED29D0AFFD00A48AFE /* EVThumbnailViewInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013CEC29D0AFFD00A48AFE /* EVThumbnailViewInterfaceTests.swift */; };
+		05013CF929D0C4B700A48AFE /* MockEVPlayerInterfaceApplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013CF529D0C3F900A48AFE /* MockEVPlayerInterfaceApplier.swift */; };
+		05013CFA29D0C4B700A48AFE /* MockEVConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013CF629D0C3F900A48AFE /* MockEVConfig.swift */; };
+		05013CFB29D0C4B700A48AFE /* MockEVMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013CF729D0C3F900A48AFE /* MockEVMedia.swift */; };
+		05013CFF29D0C6BA00A48AFE /* MockEVThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013CFD29D0C54C00A48AFE /* MockEVThumbnailView.swift */; };
+		05013D0129D17D1200A48AFE /* MockEVProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013D0029D17D1200A48AFE /* MockEVProgressView.swift */; };
+		05013D0329D17D6F00A48AFE /* EVProgressViewInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013D0229D17D6F00A48AFE /* EVProgressViewInterfaceTests.swift */; };
+		05013D0529D1866D00A48AFE /* MockEVBufferingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013D0429D1866D00A48AFE /* MockEVBufferingView.swift */; };
+		05013D0729D1869D00A48AFE /* EVBufferingViewInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013D0629D1869D00A48AFE /* EVBufferingViewInterfaceTests.swift */; };
+		05013D0B29D1BAAA00A48AFE /* MockEVCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013D0A29D1BAAA00A48AFE /* MockEVCoverView.swift */; };
+		05013D0D29D1BB0500A48AFE /* EVCoverViewInterfaceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05013D0C29D1BB0500A48AFE /* EVCoverViewInterfaceTests.swift */; };
 		4023CDD121E26305A4A2D428 /* Pods_EVPlayer_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E69C5B750995D242EB97C5D /* Pods_EVPlayer_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		ED1E27D689350B2AE8C2B31C /* Pods_EVPlayer_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45499F64EDDBEF6A80CA8B48 /* Pods_EVPlayer_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +42,17 @@
 /* Begin PBXFileReference section */
 		05013C9329CA42DC00A48AFE /* defaultThumbnail.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = defaultThumbnail.jpeg; sourceTree = "<group>"; };
 		05013C9529CA4A7800A48AFE /* defaultThumbnail2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultThumbnail2.png; sourceTree = "<group>"; };
+		05013CEC29D0AFFD00A48AFE /* EVThumbnailViewInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVThumbnailViewInterfaceTests.swift; sourceTree = "<group>"; };
+		05013CF529D0C3F900A48AFE /* MockEVPlayerInterfaceApplier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVPlayerInterfaceApplier.swift; sourceTree = "<group>"; };
+		05013CF629D0C3F900A48AFE /* MockEVConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVConfig.swift; sourceTree = "<group>"; };
+		05013CF729D0C3F900A48AFE /* MockEVMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVMedia.swift; sourceTree = "<group>"; };
+		05013CFD29D0C54C00A48AFE /* MockEVThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVThumbnailView.swift; sourceTree = "<group>"; };
+		05013D0029D17D1200A48AFE /* MockEVProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVProgressView.swift; sourceTree = "<group>"; };
+		05013D0229D17D6F00A48AFE /* EVProgressViewInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVProgressViewInterfaceTests.swift; sourceTree = "<group>"; };
+		05013D0429D1866D00A48AFE /* MockEVBufferingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVBufferingView.swift; sourceTree = "<group>"; };
+		05013D0629D1869D00A48AFE /* EVBufferingViewInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVBufferingViewInterfaceTests.swift; sourceTree = "<group>"; };
+		05013D0A29D1BAAA00A48AFE /* MockEVCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockEVCoverView.swift; sourceTree = "<group>"; };
+		05013D0C29D1BB0500A48AFE /* EVCoverViewInterfaceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVCoverViewInterfaceTests.swift; sourceTree = "<group>"; };
 		0E69C5B750995D242EB97C5D /* Pods_EVPlayer_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EVPlayer_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1072533C1591EE4D8F6CDBF1 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		1C435D38827410900FDC7ABA /* Pods-EVPlayer_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVPlayer_Tests.release.xcconfig"; path = "Target Support Files/Pods-EVPlayer_Tests/Pods-EVPlayer_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -45,7 +66,6 @@
 		607FACDF1AFB9204008FA782 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* EVPlayer_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EVPlayer_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		8557164F90907F608985E70F /* EVPlayer.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = EVPlayer.podspec; path = ../EVPlayer.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		8BD8A20F875115CA672B3691 /* Pods-EVPlayer_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVPlayer_Example.release.xcconfig"; path = "Target Support Files/Pods-EVPlayer_Example/Pods-EVPlayer_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9761A7A0A09458D0A919245C /* Pods-EVPlayer_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EVPlayer_Tests.debug.xcconfig"; path = "Target Support Files/Pods-EVPlayer_Tests/Pods-EVPlayer_Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +93,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05013D0E29D1E13000A48AFE /* MockViews */ = {
+			isa = PBXGroup;
+			children = (
+				05013CFD29D0C54C00A48AFE /* MockEVThumbnailView.swift */,
+				05013D0029D17D1200A48AFE /* MockEVProgressView.swift */,
+				05013D0429D1866D00A48AFE /* MockEVBufferingView.swift */,
+				05013D0A29D1BAAA00A48AFE /* MockEVCoverView.swift */,
+			);
+			name = MockViews;
+			sourceTree = "<group>";
+		};
 		4FD59A0FF4B5C57086B2EE91 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -130,8 +161,12 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
+				05013D0E29D1E13000A48AFE /* MockViews */,
+				05013D0229D17D6F00A48AFE /* EVProgressViewInterfaceTests.swift */,
+				05013D0C29D1BB0500A48AFE /* EVCoverViewInterfaceTests.swift */,
+				05013D0629D1869D00A48AFE /* EVBufferingViewInterfaceTests.swift */,
+				05013CEC29D0AFFD00A48AFE /* EVThumbnailViewInterfaceTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -139,6 +174,9 @@
 		607FACE91AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				05013CF529D0C3F900A48AFE /* MockEVPlayerInterfaceApplier.swift */,
+				05013CF729D0C3F900A48AFE /* MockEVMedia.swift */,
+				05013CF629D0C3F900A48AFE /* MockEVConfig.swift */,
 				607FACEA1AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -349,7 +387,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				05013D0D29D1BB0500A48AFE /* EVCoverViewInterfaceTests.swift in Sources */,
+				05013D0129D17D1200A48AFE /* MockEVProgressView.swift in Sources */,
+				05013CFA29D0C4B700A48AFE /* MockEVConfig.swift in Sources */,
+				05013CFF29D0C6BA00A48AFE /* MockEVThumbnailView.swift in Sources */,
+				05013D0B29D1BAAA00A48AFE /* MockEVCoverView.swift in Sources */,
+				05013D0729D1869D00A48AFE /* EVBufferingViewInterfaceTests.swift in Sources */,
+				05013CFB29D0C4B700A48AFE /* MockEVMedia.swift in Sources */,
+				05013D0529D1866D00A48AFE /* MockEVBufferingView.swift in Sources */,
+				05013CED29D0AFFD00A48AFE /* EVThumbnailViewInterfaceTests.swift in Sources */,
+				05013D0329D17D6F00A48AFE /* EVProgressViewInterfaceTests.swift in Sources */,
+				05013CF929D0C4B700A48AFE /* MockEVPlayerInterfaceApplier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

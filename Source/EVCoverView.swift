@@ -17,8 +17,27 @@ protocol EVCoverViewDelegate: AnyObject {
     func restart()
 }
 
-public class EVCoverView: EVBaseView {
-        
+public protocol EVCoverViewInterface {
+    func updateVolumeUI(for volume: Float)
+    func hideFullScreenButton()
+    func toggleVisibility()
+    func visible()
+    func hide()
+    func rewindEvent()
+    func forwardEvent()
+    func notifyPlayerEnded()
+    func notifyPlayerPlaying()
+    func notifyPlayerPause()
+    func updateForwardDuration(to state: EVSeekDuration)
+    func updateRewindDuration(to state: EVSeekDuration)
+    func changePlayButtonImageForBufferState()
+    func changePlayButtonImageForLoadedState()
+}
+
+public typealias EVCoverViewType = EVBaseView & EVCoverViewInterface
+
+open class EVCoverView: EVCoverViewType {
+                
     // MARK: - UI Properties
     
     private let coverStack = UIStackView()
@@ -109,7 +128,7 @@ public class EVCoverView: EVBaseView {
         super.setup()
     }
     
-    override func setConstraints() {
+    public override func setConstraints() {
         coverStack.cuiCenterInSuperview()
         coverStack.widthAnchor.cuiSet(to: 135)
         coverStack.heightAnchor.cuiSet(to: 25)
@@ -125,33 +144,33 @@ public class EVCoverView: EVBaseView {
         fullScreenButton.cuiPinLeadingToSuperView(constant: 12)
     }
     
-    func updateRewindButton(to state: EVSeekDuration) {
+    public func updateRewindDuration(to state: EVSeekDuration) {
         rewindDuration = state.value
         coverRewindButton.setImage(state.rewindImage, for: .normal)
     }
     
-    func updateForwardDuration(to state: EVSeekDuration) {
+    public func updateForwardDuration(to state: EVSeekDuration) {
         forwardDuration = state.value
         coverForwardButton.setImage(state.forwardImage, for: .normal)
     }
     
-    func updateVolumeUI(for volume: Float) {
+    public func updateVolumeUI(for volume: Float) {
         volumeView.changedValue(volume)
     }
     
-    func hideFullScreenButton() {
+    public func hideFullScreenButton() {
         fullScreenButton.isHidden = true
     }
     
-    func changePlayButtonImageForBufferState() {
+    public func changePlayButtonImageForBufferState() {
         coverPlayButton.setImage(nil, for: .normal)
     }
     
-    func changePlayButtonImageForLoadedState() {
+    public func changePlayButtonImageForLoadedState() {
         coverPlayButton.setImage(isPlaying ? Constants.Icons.pauseImage : Constants.Icons.playImage, for: .normal)
     }
 
-    func notifyPlayerEnded() {
+    public func notifyPlayerEnded() {
         visible()
         isPlaying = false
         coverPlayButton.isHidden = true
@@ -160,7 +179,7 @@ public class EVCoverView: EVBaseView {
         coverForwardButton.isEnabled = false
     }
     
-    func notifyPlayerPlaying() {
+    public func notifyPlayerPlaying() {
         isPlaying = true
         coverPlayButton.isHidden = false
         coverRestartButton.isHidden = true
@@ -168,7 +187,7 @@ public class EVCoverView: EVBaseView {
         coverForwardButton.isEnabled = true
     }
         
-    func notifyPlayerPause() {
+    public func notifyPlayerPause() {
         isPlaying = false
         coverRestartButton.isHidden = true
         coverPlayButton.isHidden = false
@@ -195,13 +214,13 @@ extension EVCoverView {
     }
     
     @objc
-    func rewindEvent() {
+    public func rewindEvent() {
         tapAnimate(coverRewindButton)
         delegate?.rewind(rewindDuration)
     }
     
     @objc
-    func forwardEvent() {
+    public func forwardEvent() {
         tapAnimate(coverForwardButton)
         delegate?.forward(forwardDuration)
     }
@@ -234,11 +253,11 @@ extension EVCoverView {
 
 extension EVCoverView {
     
-    func toggleVisibility() {
+    public func toggleVisibility() {
         isHidden ? visible() : hide()
     }
     
-    func visible() {
+    public func visible() {
         let cachedFullScreenOriginY = fullScreenButton.frame.origin.y
         fullScreenButton.frame.origin.y = 0
         
@@ -253,7 +272,7 @@ extension EVCoverView {
         isHidden = false
     }
     
-    func hide() {
+    public func hide() {
         UIView.animate(withDuration: 0.35, animations: {
             self.alpha = 0.0
         }) { _ in

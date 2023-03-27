@@ -13,7 +13,7 @@ protocol EVVolumeViewDelegate: AnyObject {
 
 final class EVVolumeView: EVBaseView {
     
-    private lazy var soundSlider = EVSoundSliderView()
+    private lazy var soundSlider = EVSliderFactory.create(ofType: .sound) as! EVSoundSliderView
     private lazy var soundButton = UIButton(type: .custom)
     
     weak var delegate: EVVolumeViewDelegate?
@@ -48,7 +48,7 @@ final class EVVolumeView: EVBaseView {
         soundSlider.cuiPinLeadingToSuperView()
         soundSlider.trailingAnchor.cuiDock(to: soundButton.leadingAnchor, constant: -5)
     }
-    
+        
     @objc func switchSoundState() {
         isSoundOpen.toggle()
         

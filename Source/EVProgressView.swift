@@ -1,5 +1,5 @@
 //
-//  EVPropertiesView.swift
+//  EVProgressView.swift
 //  EVPlayer
 //
 //  Created by Emirhan Saygiver on 28.02.2023.
@@ -8,11 +8,32 @@
 import UIKit
 import AVKit
 
-public class EVPlayerPropertiesView: UIStackView {
+public protocol EVProgressViewInterface {
+    var isHidden: Bool { get set }
+    var minimumTrackTintColor: UIColor? { get set }
+    var maximumTrackTintColor: UIColor? { get set }
+    func updateDuration(current: CMTime, total: CMTime)
+}
+
+public typealias EVProgressViewType = UIStackView & EVProgressViewInterface
+
+public class EVProgressView: EVProgressViewType {
     
-    lazy var videoSlider = EVProgressSliderView()
+    lazy var videoSlider = EVSliderFactory.create(ofType: .progress) as! EVProgressSliderView
     private let currentVideoDurationLabel = UILabel()
     private let totalVideoDurationLabel = UILabel()
+    
+    public var minimumTrackTintColor: UIColor? {
+        didSet {
+            videoSlider._minimumTrackTintColor = minimumTrackTintColor
+        }
+    }
+    
+    public var maximumTrackTintColor: UIColor? {
+        didSet {
+            videoSlider._maximumTrackTintColor = maximumTrackTintColor
+        }
+    }
 
     // MARK: - Initializer
     
@@ -50,7 +71,7 @@ public class EVPlayerPropertiesView: UIStackView {
         addArrangedSubview(totalVideoDurationLabel)
     }
     
-    func updateDuration(current: CMTime, total: CMTime) {
+    public func updateDuration(current: CMTime, total: CMTime) {
         DispatchQueue.main.async {
             self.videoSlider.value = Float(current.seconds / total.seconds)
             

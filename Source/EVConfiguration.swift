@@ -9,7 +9,7 @@ import Foundation
 import AVKit
 
 public protocol EVConfigurationInterface {
-    var media: EVMediaInterface? { get }
+    var media: EVMedia { get }
     var initialState: EVVideoState? { get }
     var context: EVTransactionContextInterface? { get }
     
@@ -31,7 +31,7 @@ public protocol EVConfigurationInterface {
 }
 
 public struct EVConfiguration: EVConfigurationInterface {
-    public let media: EVMediaInterface?
+    public let media: EVMedia
     public var initialState: EVVideoState?
     public var context: EVTransactionContextInterface?
     public var seekTime: CMTime?
@@ -41,7 +41,7 @@ public struct EVConfiguration: EVConfigurationInterface {
     
     // MARK: - Initializer
     
-    public init(media: EVMediaInterface? = nil,
+    public init(media: EVMedia,
                 state: EVVideoState? = .thumbnail,
                 context: EVTransactionContextInterface? = nil) {
         

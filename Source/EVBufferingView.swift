@@ -7,7 +7,14 @@
 
 import UIKit
 
-public class EVBufferingView: EVBaseView {
+public protocol EVBufferingViewInterface {
+    func show()
+    func hide(_ completion: @escaping (() -> Void))
+}
+
+public typealias EVBufferingViewType = EVBaseView & EVBufferingViewInterface
+
+open class EVBufferingView: EVBufferingViewType {
     
     private lazy var progressView: UIActivityIndicatorView = {
         let prgView = UIActivityIndicatorView()
@@ -35,15 +42,15 @@ public class EVBufferingView: EVBaseView {
         progressView.widthAnchor.cuiSet(to: 40)
     }
 
-    func show() {
+    public func show() {
         isHidden = false
         progressView.isHidden = false
         progressView.startAnimating()
     }
     
-    func hide(_ completion: (() -> Void)? = nil) {
+    public func hide(_ completion: @escaping (() -> Void)) {
         isHidden = true
         progressView.stopAnimating()
-        completion?()
+        completion()
     }
 }

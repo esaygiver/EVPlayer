@@ -13,9 +13,12 @@ public class EVPlayerController: UIViewController {
     public typealias EVDefaultCallback = () -> Void
     public typealias EVConfigCallback = (EVConfiguration) -> Void
 
-    private(set) var videoContainerView: EVFullScreenView!
+    private(set) var evFullScreenPlayer: EVFullScreenPlayer!
     private(set) var configuration: EVConfiguration?
     private let dismissButton = UIButton(type: .custom)
+    
+    private lazy var panGR = UIPanGestureRecognizer(target: self, action: #selector(panGestureRecognizerHandler))
+    private var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
     
     private var willDismissCallback: EVConfigCallback?
     private var didDismissCallback: EVDefaultCallback?
@@ -53,28 +56,30 @@ public class EVPlayerController: UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        view.addGestureRecognizer(panGR)
         view.backgroundColor = .black
         configureVideoView()
         configureDismissButton()
+        
     }
     
     private func configureVideoView() {
         guard let config = configuration else {
             return
         }
-        videoContainerView = EVFullScreenView()
-        videoContainerView.reload(with: config)
+        evFullScreenPlayer = EVFullScreenPlayer(frame: .zero)
+        evFullScreenPlayer.reload(with: config)
         
-        view.addSubview(videoContainerView)
+        view.addSubview(evFullScreenPlayer)
         
-        videoContainerView.cuiPinLeadingToSuperView()
-        videoContainerView.cuiPinTrailingToSuperView()
-        videoContainerView.cuiPinTopToSuperView(constant: 30)
-        videoContainerView.cuiPinBottomToSuperView(constant: -30)
+        evFullScreenPlayer.cuiPinLeadingToSuperView()
+        evFullScreenPlayer.cuiPinTrailingToSuperView()
+        evFullScreenPlayer.cuiPinTopToSuperView(constant: 30)
+        evFullScreenPlayer.cuiPinBottomToSuperView(constant: -30)
     }
     
     private func configureDismissButton() {
-        videoContainerView.addSubview(dismissButton)
+        evFullScreenPlayer.addSubview(dismissButton)
         dismissButton.addTarget(self, action: #selector(dismissScene), for: .touchUpInside)
         dismissButton.setImage(Constants.Icons.dismissImage, for: .normal)
         dismissButton.tintColor = .white
@@ -122,6 +127,39 @@ public class EVPlayerController: UIViewController {
             self?.didDismissCallback?()
         }
     }
+    
+    @objc
+    private func panGestureRecognizerHandler(_ sender: UIPanGestureRecognizer) {
+        let touchPoint = sender.location(in: view?.window)
+
+        switch sender.state {
+        case .began:
+            initialTouchPoint = touchPoint
+            
+        case .changed:
+            if touchPoint.y - initialTouchPoint.y > 0 {
+                view.frame = CGRect(x: 0, y: touchPoint.y - initialTouchPoint.y,
+                                    width: view.frame.size.width,
+                                    height: view.frame.size.height)
+            }
+            
+        case .ended,
+                .cancelled:
+            if touchPoint.y - initialTouchPoint.y > 150 {
+                dismissScene()
+                
+            } else {
+                UIView.animate(withDuration: 0.15, animations: {
+                    self.view.frame = CGRect(x: 0, y: 0,
+                                             width: self.view.frame.size.width,
+                                             height: self.view.frame.size.height)
+                })
+            }
+            
+        default:
+            break
+        }
+    }
 }
 
 // MARK: - Publish Config
@@ -129,7 +167,7 @@ public class EVPlayerController: UIViewController {
 extension EVPlayerController {
     
     private func willDismissWithConfig() {
-        guard let player = videoContainerView.player else {
+        guard let player = evFullScreenPlayer.player else {
             return
         }
                 
@@ -137,7 +175,8 @@ extension EVPlayerController {
                                                   isMuted: player.isMuted,
                                                   volume: player.volume)
         
-        let dismissConfig = EVConfiguration(state: videoContainerView.videoState,
+        let dismissConfig = EVConfiguration(media: evFullScreenPlayer.configuration!.media,
+                                            state: evFullScreenPlayer.videoState,
                                             context: dismissContext)
         
         /// To avoid audio clutter when dismiss transaction

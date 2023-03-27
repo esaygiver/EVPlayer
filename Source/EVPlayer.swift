@@ -14,15 +14,15 @@ public protocol EVPlayerDelegate: AnyObject {
     func evPlayer(fullScreenTransactionUpdateTo state: EVFullScreenState)
 }
 
-open class EVPlayer: UIView {
+public class EVPlayer: UIView {
     
     // MARK: - UI
     
     let videoLayer = UIView()
-    let thumbnailView = EVThumbnailView()
-    let coverView = EVCoverView()
-    let propertiesStackView = EVPlayerPropertiesView()
-    let bufferingView = EVBufferingView()
+    var thumbnailInterface: EVThumbnailViewInterface!
+    var coverInterface: EVCoverViewInterface!
+    var progressInterface: EVProgressViewInterface!
+    var bufferingInterface: EVBufferingViewInterface!
     
     // Tap Gestures
     lazy var singleTapGR = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
@@ -51,8 +51,10 @@ open class EVPlayer: UIView {
     
     // MARK: - Initializer
     
-    public override init(frame: CGRect) {
+    public init(frame: CGRect,
+                interfaceImpl: EVPlayerInterfaceImplementation = EVPlayerInterfaceApplier()) {
         super.init(frame: frame)
+        apply(interfaceImpl)
         setupUI()
     }
     
@@ -83,6 +85,13 @@ open class EVPlayer: UIView {
             player?.removeTimeObserver(timeObserverToken)
             timeObserver = nil
         }
+    }
+    
+    private func apply(_ interfaceImpl: EVPlayerInterfaceImplementation) {
+        thumbnailInterface = interfaceImpl._thumbnail
+        coverInterface = interfaceImpl._cover
+        progressInterface = interfaceImpl._progress
+        bufferingInterface = interfaceImpl._buffering
     }
 }
 
@@ -126,11 +135,11 @@ extension EVPlayer: EVNavigationAdapter { }
 
 extension EVPlayer: EVCoverViewDelegate {
         
-    public func play() {
+    func play() {
         updateState(to: .play)
     }
     
-    public func pause() {
+    func pause() {
         updateState(to: .pause)
     }
     
@@ -223,31 +232,5 @@ extension EVPlayer: EVThumbnailViewDelegate {
     
     func start() {
         updateState(to: .play)
-    }
-}
-
-// MARK: - Gesture Handlers
-
-extension EVPlayer {
-    
-    @objc
-    private func handleSingleTap(sender: UITapGestureRecognizer) {
-        coverView.toggleVisibility()
-    }
-    
-    @objc
-    private func handleDoubleTap(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            
-            if (sender.location(ofTouch: 0, in: videoLayer).x + 75) < videoLayer.bounds.midX { // Rewind
-                coverView.rewindEvent()
-                
-            } else if sender.location(ofTouch: 0, in: videoLayer).x > (videoLayer.bounds.midX + 75) { // Forward
-                coverView.forwardEvent()
-                
-            } else {
-                handleSingleTap(sender: sender)
-            }
-        }
     }
 }

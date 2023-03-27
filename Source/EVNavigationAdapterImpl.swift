@@ -1,5 +1,5 @@
 //
-//  NavigationChangeAdapter.swift
+//  EVNavigationAdapterImpl.swift.swift
 //  EVPlayer
 //
 //  Created by Emirhan Saygiver on 17.03.2023.
@@ -16,12 +16,12 @@ import Foundation
 
 /// Use this protocol for changing EVPlayer state, when trying to change top UIViewController on view hierarchy.
 public protocol EVNavigationAdapter {
-    func changeStateForNavigationChanges(to state: EVVideoState)
+    func changeState(to state: EVVideoState)
 }
 
 extension EVNavigationAdapter where Self: EVPlayer {
     
-    public func changeStateForNavigationChanges(to state: EVVideoState) {
+    public func changeState(to state: EVVideoState) {
         updateState(to: state)
     }
 }

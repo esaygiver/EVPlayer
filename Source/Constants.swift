@@ -32,7 +32,7 @@ final class Constants {
         static let restartImage             = UIImage(named: "memories",                    in: Bundle(for: Constants.self), compatibleWith: nil)
         static let soundOffImage            = UIImage(named: "player_mute",                 in: Bundle(for: Constants.self), compatibleWith: nil)
         static let soundOnImage             = UIImage(named: "player_unmute",               in: Bundle(for: Constants.self), compatibleWith: nil)
-        static let fullScreenImage          = UIImage(named: "rectangle.expand.vertical",   in: Bundle(for: Constants.self), compatibleWith: nil)
+        static let fullScreenImage          = UIImage(named: "enterFullScreen",             in: Bundle(for: Constants.self), compatibleWith: nil)
         static let dismissImage             = UIImage(named: "xmark",                       in: Bundle(for: Constants.self), compatibleWith: nil)
         static let notAvailablePlayingImage = UIImage(named: "play.slash",                  in: Bundle(for: Constants.self), compatibleWith: nil)
         static let overlayForwardImage      = UIImage(named: "forward.fill",                in: Bundle(for: Constants.self), compatibleWith: nil)

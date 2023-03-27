@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum EVOverlayType {
+public enum EVOverlayType {
     case forward
     case rewind
     case none

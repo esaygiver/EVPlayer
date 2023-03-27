@@ -1,5 +1,5 @@
 //
-//  StateImpl.swift
+//  EVStateImpl.swift
 //  EVPlayer
 //
 //  Created by Emirhan Saygiver on 12.03.2023.
@@ -24,27 +24,27 @@ extension EVStateProtocol where Self: EVPlayer {
         switch state {
         case .quickPlay:
             updateState(to: .thumbnail)
-            thumbnailView.makePlayButtonHidden()
+            thumbnailInterface.makePlayButtonHidden()
             updateState(to: .play)
             
         case .play:
             showProgress()
-            coverView.notifyPlayerPlaying()
+            coverInterface.notifyPlayerPlaying()
             player?.play()
             
         case .pause:
             hideProgress()
-            coverView.notifyPlayerPause()
+            coverInterface.notifyPlayerPause()
             player?.pause()
             
         case .thumbnail:
             updateState(to: .pause)
-            bringSubviewToFront(thumbnailView)
-            thumbnailView.isHidden = false
-            propertiesStackView.isHidden = true
+            bringSubviewToFront(thumbnailInterface as! UIView)
+            thumbnailInterface.isVisible = true
+            progressInterface.isHidden = true
             
         case .ended:
-            coverView.notifyPlayerEnded()
+            coverInterface.notifyPlayerEnded()
             
         case .restart:
             seek(to: .zero, continueFrom: .play)

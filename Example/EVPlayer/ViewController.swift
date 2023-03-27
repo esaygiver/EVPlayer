@@ -63,7 +63,7 @@ class ViewController: UIViewController {
 //        config.progressBarMinimumTrackTintColor = .green
 //        config.forwardSeekDuration = .k15
 //        config.rewindSeekDuration = .k45
-//        config.shouldAutoPlay = true
+        config.shouldAutoPlay = true
 //        config.fullScreenModeVideoGravity = .resize
 //        config.isFullScreenShouldOpenWithLandscapeMode = true
 //        config.shouldLoopVideo = true

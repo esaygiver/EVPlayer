@@ -1,5 +1,5 @@
 //
-//  EVFullScreenView.swift
+//  EVFullScreenPlayer.swift
 //  EVPlayer
 //
 //  Created by Emirhan Saygiver on 6.03.2023.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-open class EVFullScreenView: EVPlayer {
+public class EVFullScreenPlayer: EVPlayer {
     
     // MARK: - Initializer
     
-    override init(frame: CGRect) {
+    override init(frame: CGRect, interfaceImpl: EVPlayerInterfaceImplementation = EVPlayerInterfaceApplier()) {
         super.init(frame: frame)
         applyFullScreenUI()
     }
@@ -31,7 +31,9 @@ open class EVFullScreenView: EVPlayer {
     }
     
     func applyFullScreenUI() {
-        coverView.backgroundColor = .clear
-        coverView.hideFullScreenButton()
+        if let coverView = coverInterface as? EVCoverView {
+            coverView.backgroundColor = .clear
+            coverView.hideFullScreenButton()
+        }
     }
 }

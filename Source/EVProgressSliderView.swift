@@ -9,13 +9,13 @@ import UIKit
 
 final class EVProgressSliderView: EVSliderView {
     
-    var _minimumTrackTintColor: UIColor = .orange {
+    var _minimumTrackTintColor: UIColor? = .orange {
         didSet {
             minimumTrackTintColor = _minimumTrackTintColor
         }
     }
     
-    var _maximumTrackTintColor: UIColor = .lightGray.withAlphaComponent(0.8) {
+    var _maximumTrackTintColor: UIColor? = .lightGray.withAlphaComponent(0.8) {
         didSet {
             maximumTrackTintColor = _maximumTrackTintColor
         }

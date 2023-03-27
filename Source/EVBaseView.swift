@@ -7,16 +7,16 @@
 
 import UIKit
 
-public class EVBaseView: UIView {
+open class EVBaseView: UIView {
     
     // MARK: - Initializer
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
