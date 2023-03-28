@@ -62,7 +62,7 @@ $ pod install
 
 Download the project, just drag and drop classes under **Source** file to your project.
 
-## Getting started
+## ▶️ Getting started
 
 > Create EVPlayer object
 ```swift
@@ -109,7 +109,7 @@ EVPlayerController.startFullScreenMode(withConfiguration: config)
 
 ![EVGIF4](https://user-images.githubusercontent.com/73871735/228203021-6daebeea-2960-4a18-b3cf-170b2d7561c3.gif)
 
-## Customization
+## 🛠️ Customization
 
 EVPlayer comes with several customizable features. You can customize these features on EVConfiguration file;
 
@@ -194,7 +194,7 @@ EVPlayer comes with several customizable features. You can customize these featu
       ⏯️ Default is YES
      
  
-## Delegate
+## 🖇️ Delegate
 
 If you want to track current player state, current & total duration, and full screen lifecycle you can set delegate;
 
@@ -209,7 +209,7 @@ func evPlayer(timeChangedTo currentTime: Double, totalTime: Double, loadedRange:
 func evPlayer(fullScreenTransactionUpdateTo state: EVFullScreenState)
 ```
 
-## Author
+## 🙋🏻‍♂️ Author
 
 Emirhan Saygıver
 - [Linkedin][2]
@@ -218,11 +218,11 @@ Emirhan Saygıver
 [2]: https://www.linkedin.com/in/emirhansaygıver/
 [3]: https://twitter.com/esaygiver
 
-## Questions or Advices
+## ❓Questions or Advices
 
 Just send me an email (saygivere@gmail.com)
 
 
-## License
+## 📔 License
 
 EVPlayer is available under the MIT license. See the LICENSE file for more info.

@@ -8,10 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EVPlayer'
-  s.version          = '0.1.1'
+  s.version          = '1.0.0'
   s.summary          = 'EVPlayer has very easy usage & set up and, offers an interface enhanced with animations.'
 
-  s.description      = 'EVPlayer is a customized UIView with AVPlayer inside. With multiple states, it makes video playback extremely easy for the user.'
+  s.description      = 'EVPlayer is a customized UIView with AVPlayer, which makes video playback extremely easy with its various usage options.'
 
   s.homepage         = 'https://github.com/esaygiver/EVPlayer'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
