@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '12.0'
   s.swift_version = "5.0"
-  s.platform = {
+  s.platforms = {
       "ios": "12.0"
   }
 
