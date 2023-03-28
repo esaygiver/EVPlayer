@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'EVPlayer'
-  s.version          = '1.0.0'
+  s.version          = '0.2.1'
   s.summary          = 'EVPlayer has very easy usage & set up and, offers an interface enhanced with animations.'
 
   s.description      = 'EVPlayer is a customized UIView with AVPlayer, which makes video playback extremely easy with its various usage options.'
@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '12.0'
   s.swift_version = "5.0"
-  s.platforms = {
+  s.platform = {
       "ios": "12.0"
   }
 
