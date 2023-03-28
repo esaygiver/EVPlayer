@@ -207,6 +207,14 @@ extension EVPlayer {
         setGestureRecognizers()
     }
     
+    @objc
+    public func makePlayerPropertiesVisible() {
+        coverInterface.toggleVisibility()
+        progressInterface.makeVisibleWithAnimation()
+    }
+    
+    // Gesture Handlers
+
     func setGestureRecognizers() {
         singleTapGR.numberOfTapsRequired = 1
         videoLayer.addGestureRecognizer(singleTapGR)
@@ -215,14 +223,6 @@ extension EVPlayer {
         videoLayer.addGestureRecognizer(doubleTapGR)
         
         singleTapGR.require(toFail: doubleTapGR)
-    }
-    
-    // Gesture Handlers
-    
-    @objc
-    public func makePlayerPropertiesVisible() {
-        coverInterface.toggleVisibility()
-        progressInterface.makeVisibleWithAnimation()
     }
     
     @objc

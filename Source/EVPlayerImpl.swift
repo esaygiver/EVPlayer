@@ -7,11 +7,14 @@
 
 import AVKit
 
-protocol EVPlayerProtocol {
+protocol EVPlayerSeekOrganizer {
+    func seek(to time: CMTime?, continueFrom state: EVVideoState?)
+}
+
+protocol EVPlayerProtocol: EVPlayerSeekOrganizer {
     func setPlayerItem(with asset: AVAsset)
     func setPlayer()
     func setPlayerLayer()
-    func seek(to time: CMTime?, continueFrom state: EVVideoState?)
 }
 
 extension EVPlayerProtocol where Self: EVPlayer {
@@ -29,7 +32,6 @@ extension EVPlayerProtocol where Self: EVPlayer {
         }
         player = AVPlayer(playerItem: playerItem)
         player?.automaticallyWaitsToMinimizeStalling = true
-        player?.isMuted = true
     }
     
     func setPlayerLayer() {

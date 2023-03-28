@@ -11,7 +11,8 @@ public class EVFullScreenPlayer: EVPlayer {
     
     // MARK: - Initializer
     
-    override init(frame: CGRect, interfaceImpl: EVPlayerInterfaceImplementation = EVPlayerInterfaceApplier()) {
+    override init(frame: CGRect,
+                  interfaceImpl: EVPlayerInterfaceImplementation = EVPlayerInterfaceApplier()) {
         super.init(frame: frame)
         applyFullScreenUI()
     }
