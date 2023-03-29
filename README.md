@@ -1,8 +1,13 @@
 # EVPlayer
 
+<p align="center" >
+<img src="https://user-images.githubusercontent.com/73871735/228503759-255a4a44-cb40-41a4-86cc-3ee4ae947cea.png" alt="Logo" title="Logo" width=300>
+</p>
+
 [![Version](https://img.shields.io/cocoapods/v/EVPlayer.svg?style=flat)](https://cocoapods.org/pods/EVPlayer)
 [![License](https://img.shields.io/cocoapods/l/EVPlayer.svg?style=flat)](https://cocoapods.org/pods/EVPlayer)
 [![Platform](https://img.shields.io/cocoapods/p/EVPlayer.svg?style=flat)](https://cocoapods.org/pods/EVPlayer)
+![Swift 4.2](https://img.shields.io/badge/Swift-5-orange.svg)
 
 ``EVPlayer`` is a customized UIView with ``AVPlayer``, which makes video playback extremely easy with its various usage options
 
