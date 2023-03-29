@@ -106,13 +106,19 @@ evPlayer.load(with: config)
 
 **EVPlayerController Usage**
 ```swift
-let config = EVConfiguration(media: media)
+var config = EVConfiguration(media: media)
+
+config.shouldAutoPlay = true
+config.fullScreenSupportedInterfaceOrientations = .allButUpsideDown
+config.forwardSeekDuration = .k30
+config.rewindSeekDuration = .k15
+.
+.
         
 EVPlayerController.startFullScreenMode(withConfiguration: config)
 
 ```
-
-![EVGIF4](https://user-images.githubusercontent.com/73871735/228203021-6daebeea-2960-4a18-b3cf-170b2d7561c3.gif)
+![EVGIF5](https://user-images.githubusercontent.com/73871735/228553480-1d0576b6-21a4-41fb-aa7b-20c6da8c724d.gif)
 
 ## 🛠️ Customization
 
