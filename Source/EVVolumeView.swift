@@ -20,13 +20,12 @@ final class EVVolumeView: EVBaseView {
     private(set) var isSoundOpen = true
     
     override func setup() {
-        soundButton.setImage(Constants.Icons.soundOnImage, for: .normal)
+        updateSoundButtonImage(Constants.Icons.soundOnImage)
         soundButton.tintColor = .white
         soundButton.contentVerticalAlignment = .fill
         soundButton.contentHorizontalAlignment = .fill
         soundButton.setTitle("", for: .normal)
         soundButton.backgroundColor = .clear
-        soundButton.adjustsImageWhenHighlighted = false
         soundButton.addTarget(self, action: #selector(switchSoundState), for: .touchUpInside)
         
         soundSlider.delegate = self
@@ -61,14 +60,19 @@ final class EVVolumeView: EVBaseView {
         }
         
         if isSoundOpen {
-            soundButton.setImage(Constants.Icons.soundOnImage, for: .normal)
+            updateSoundButtonImage(Constants.Icons.soundOnImage)
             soundSlider.value = 1.0
             changedValue(1.0)
         } else {
-            soundButton.setImage(Constants.Icons.soundOffImage, for: .normal)
+            updateSoundButtonImage(Constants.Icons.soundOffImage)
             soundSlider.value = 0.0
             changedValue(0.0)
         }
+    }
+
+    private func updateSoundButtonImage(_ image: UIImage?) {
+        soundButton.setImage(image, for: .normal)
+        soundButton.setImage(image, for: .highlighted)
     }
 }
 
@@ -80,7 +84,7 @@ extension EVVolumeView: EVSoundSliderViewDelegate {
         soundSlider.value = val
         isSoundOpen = val != 0
         soundSlider.changeSliderUI(value: val)
-        soundButton.setImage(isSoundOpen ? Constants.Icons.soundOnImage : Constants.Icons.soundOffImage, for: .normal)
+        updateSoundButtonImage(isSoundOpen ? Constants.Icons.soundOnImage : Constants.Icons.soundOffImage)
         delegate?.volumeChangedTo(val)
     }
 }

@@ -1,6 +1,0 @@
-framework module EVPlayer {
-  umbrella header "EVPlayer-umbrella.h"
-
-  export *
-  module * { export * }
-}

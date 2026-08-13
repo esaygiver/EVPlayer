@@ -51,38 +51,34 @@ public class EVCoverView: EVBaseView {
         coverPlayButton.tintColor = .white
         coverPlayButton.contentVerticalAlignment = .fill
         coverPlayButton.contentHorizontalAlignment = .fill
-        coverPlayButton.setImage(Constants.Icons.pauseImage, for: .normal)
+        updateImage(Constants.Icons.pauseImage, for: coverPlayButton)
         coverPlayButton.setTitle("", for: .normal)
         coverPlayButton.backgroundColor = .clear
-        coverPlayButton.adjustsImageWhenHighlighted = false
         coverPlayButton.addTarget(self, action: #selector(togglePlayingStatus), for: .touchUpInside)
         coverPlayButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         
         coverRewindButton.tintColor = .white
         coverRewindButton.contentVerticalAlignment = .fill
         coverRewindButton.contentHorizontalAlignment = .fill
-        coverRewindButton.setImage(Constants.Icons.rewindImage10, for: .normal)
+        updateImage(Constants.Icons.rewindImage10, for: coverRewindButton)
         coverRewindButton.setTitle("", for: .normal)
         coverRewindButton.backgroundColor = .clear
-        coverRewindButton.adjustsImageWhenHighlighted = false
         coverRewindButton.addTarget(self, action: #selector(rewindEvent), for: .touchUpInside)
         
         coverForwardButton.tintColor = .white
         coverForwardButton.contentVerticalAlignment = .fill
         coverForwardButton.contentHorizontalAlignment = .fill
-        coverForwardButton.setImage(Constants.Icons.forwardImage10, for: .normal)
+        updateImage(Constants.Icons.forwardImage10, for: coverForwardButton)
         coverForwardButton.setTitle("", for: .normal)
         coverForwardButton.backgroundColor = .clear
-        coverForwardButton.adjustsImageWhenHighlighted = false
         coverForwardButton.addTarget(self, action: #selector(forwardEvent), for: .touchUpInside)
         
         coverRestartButton.tintColor = .white
         coverRestartButton.contentVerticalAlignment = .fill
         coverRestartButton.contentHorizontalAlignment = .fill
-        coverRestartButton.setImage(Constants.Icons.restartImage, for: .normal)
+        updateImage(Constants.Icons.restartImage, for: coverRestartButton)
         coverRestartButton.setTitle("", for: .normal)
         coverRestartButton.backgroundColor = .clear
-        coverRestartButton.adjustsImageWhenHighlighted = false
         coverRestartButton.addTarget(self, action: #selector(restartEvent), for: .touchUpInside)
         coverRestartButton.transform = CGAffineTransform(scaleX: 1.7, y: 1.6)
         coverRestartButton.isHidden = true
@@ -127,12 +123,12 @@ public class EVCoverView: EVBaseView {
     
     func updateRewindButton(to state: EVSeekDuration) {
         rewindDuration = state.value
-        coverRewindButton.setImage(state.rewindImage, for: .normal)
+        updateImage(state.rewindImage, for: coverRewindButton)
     }
     
     func updateForwardDuration(to state: EVSeekDuration) {
         forwardDuration = state.value
-        coverForwardButton.setImage(state.forwardImage, for: .normal)
+        updateImage(state.forwardImage, for: coverForwardButton)
     }
     
     func updateVolumeUI(for volume: Float) {
@@ -144,11 +140,16 @@ public class EVCoverView: EVBaseView {
     }
     
     func changePlayButtonImageForBufferState() {
-        coverPlayButton.setImage(nil, for: .normal)
+        updateImage(nil, for: coverPlayButton)
     }
     
     func changePlayButtonImageForLoadedState() {
-        coverPlayButton.setImage(isPlaying ? Constants.Icons.pauseImage : Constants.Icons.playImage, for: .normal)
+        updateImage(isPlaying ? Constants.Icons.pauseImage : Constants.Icons.playImage, for: coverPlayButton)
+    }
+
+    private func updateImage(_ image: UIImage?, for button: UIButton) {
+        button.setImage(image, for: .normal)
+        button.setImage(image, for: .highlighted)
     }
 
     func notifyPlayerEnded() {
@@ -273,7 +274,7 @@ private extension EVCoverView {
         }) { (_) in
             UIView.animate(withDuration: 0.1, animations: {
                 self.coverPlayButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                self.coverPlayButton.setImage(Constants.Icons.pauseImage, for: .normal)
+                self.updateImage(Constants.Icons.pauseImage, for: self.coverPlayButton)
             }) { _ in
                 self.hide()
             }
@@ -286,7 +287,7 @@ private extension EVCoverView {
         }) { (_) in
             UIView.animate(withDuration: 0.1, animations: {
                 self.coverPlayButton.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                self.coverPlayButton.setImage(Constants.Icons.playImage, for: .normal)
+                self.updateImage(Constants.Icons.playImage, for: self.coverPlayButton)
             })
         }
     }

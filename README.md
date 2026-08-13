@@ -23,13 +23,29 @@
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example project, clone the repository and open `Example/EVPlayer.xcodeproj`. Xcode resolves the local EVPlayer Swift package automatically.
 
 ## Requirements
 
-- iOS 12.0+
+- iOS 15.0+
 
 ## Installation
+
+**Using Swift Package Manager**
+
+In Xcode, select **File > Add Package Dependencies** and enter:
+
+```text
+https://github.com/esaygiver/EVPlayer.git
+```
+
+You can also add EVPlayer to another package:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/esaygiver/EVPlayer.git", from: "2.0.0")
+]
+```
 
 **Using CocoaPods**
 
@@ -43,7 +59,7 @@ To integrate ``EVPlayer`` into your Xcode project using CocoaPods, specify it in
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
-platform :ios, '12.0'
+platform :ios, '15.0'
 use_frameworks!
 
 target '<Your Target Name>' do

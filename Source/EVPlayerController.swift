@@ -98,7 +98,7 @@ public class EVPlayerController: UIViewController {
         willDismissCallback: EVConfigCallback? = nil,
         didDismissCallback: EVDefaultCallback? = nil) {
             
-            guard let rootVC = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
+            guard let presenter = topViewController(from: activeRootViewController()) else {
                 EVDefaultLogger.logger.error("\(#file), there is no root!")
                 return
             }
@@ -109,10 +109,39 @@ public class EVPlayerController: UIViewController {
             eVController.willDismissCallback = willDismissCallback
             eVController.didDismissCallback = didDismissCallback
             
-            rootVC.present(eVController,
-                           animated: config.isTransactionAnimated,
-                           completion: presentCallback)
+            presenter.present(eVController,
+                              animated: config.isTransactionAnimated,
+                              completion: presentCallback)
         }
+
+    private class func activeRootViewController() -> UIViewController? {
+        UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .filter { $0.activationState == .foregroundActive }
+            .flatMap(\.windows)
+            .first(where: \.isKeyWindow)?
+            .rootViewController
+    }
+
+    private class func topViewController(from viewController: UIViewController?) -> UIViewController? {
+        if let presentedViewController = viewController?.presentedViewController {
+            return topViewController(from: presentedViewController)
+        }
+
+        if let navigationController = viewController as? UINavigationController {
+            return topViewController(from: navigationController.visibleViewController)
+        }
+
+        if let tabBarController = viewController as? UITabBarController {
+            return topViewController(from: tabBarController.selectedViewController)
+        }
+
+        if let splitViewController = viewController as? UISplitViewController {
+            return topViewController(from: splitViewController.viewControllers.last)
+        }
+
+        return viewController
+    }
     
     @objc
     private func dismissScene() {

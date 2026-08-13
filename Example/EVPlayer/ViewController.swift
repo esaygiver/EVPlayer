@@ -54,10 +54,10 @@ class ViewController: UIViewController {
         evPlayer.delegate = self
         evPlayer.center = view.center
         
-        let media = EVMedia(videoURL: URL(string: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4")!,
+        let media = EVMedia(videoURL: URL(string: "https://media.w3.org/2010/05/sintel/trailer.mp4")!,
                             thumbnailURL: URL(fileURLWithPath: Bundle.main.path(forResource: "defaultThumbnail2", ofType: "png") ?? ""))
         
-        var config = EVConfiguration(media: media)
+        let config = EVConfiguration(media: media)
         
 //        config.isFullScreenModeSupported = false
 //        config.progressBarMinimumTrackTintColor = .green

@@ -5,7 +5,7 @@
 //  Created by Emirhan Saygiver on 20.03.2023.
 //
 
-import Foundation
+import UIKit
 
 protocol EVSoundSliderViewDelegate: AnyObject {
     func changedValue(_ val: Float)

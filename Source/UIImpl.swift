@@ -171,10 +171,11 @@ extension EVUIProtocol where Self: EVPlayer {
     }
     
     func hideProgress() {
-        DispatchQueue.main.async {
-            self.sendSubviewToBack(self.bufferingView)
-            self.bufferingView.hide { [weak self] in
-                self?.coverView.changePlayButtonImageForLoadedState()
+        DispatchQueue.main.async { [weak self] in
+            guard let self else { return }
+            sendSubviewToBack(self.bufferingView)
+            bufferingView.hide {
+                self.coverView.changePlayButtonImageForLoadedState()
             }
         }
     }

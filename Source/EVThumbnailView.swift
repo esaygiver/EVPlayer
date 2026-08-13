@@ -74,7 +74,7 @@ public class EVThumbnailView: EVBaseView {
             return
         }
 
-        URLSession.shared.dataTask(with: url) { (data, _, error) in
+        URLSession.shared.dataTask(with: url) { [weak self] (data, _, error) in
             guard error == nil else {
                 EVDefaultLogger.logger.error(error!.localizedDescription)
                 return
@@ -85,7 +85,7 @@ public class EVThumbnailView: EVBaseView {
                 return
             }
             
-            DispatchQueue.main.async() { [weak self] in
+            DispatchQueue.main.async() {
                 self?.imageView.image = UIImage(data: data)
             }
             
